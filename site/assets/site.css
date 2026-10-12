@@ -290,5 +290,3 @@ pre {
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .site-footer a { color: var(--text-2); }
 .site-footer a:hover { color: var(--text); }
-.site-footer .sponsor-link { display: inline-flex; align-items: center; gap: 5px; }
-.site-footer .sponsor-link svg { width: 0.95em; height: 0.95em; }
