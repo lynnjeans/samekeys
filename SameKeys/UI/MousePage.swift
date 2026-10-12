@@ -213,7 +213,7 @@ struct WheelSettings: View {
                 }
                 Divider().padding(.vertical, 12)
                 modifierPicker
-                if rules.zoomModifiers == [.control] {
+                if zoomsWithCtrlSomewhere {
                     Label {
                         Text("macOS can zoom the whole screen with Ctrl+scroll (Accessibility › Zoom › “Use scroll gesture with modifier keys”). If that is on, it wins and pages do not zoom: choose fn, or turn it off.")
                             .fixedSize(horizontal: false, vertical: true)
@@ -239,9 +239,17 @@ struct WheelSettings: View {
             : "Natural scrolling is off in System Settings, so wheels already scroll this way."
     }
 
+    /// Ctrl first: it is the Windows Ctrl, pressed as each keyboard presses
+    /// its Ctrl shortcuts (SK-297), and the default.
     private static let singles: [(Modifiers, LocalizedStringKey)] = [
-        ([.function], "fn"), ([.control], "Ctrl"), ([.option], "⌥ Option"), ([.command], "⌘ Command"),
+        ([.control], "Same key as Ctrl+C"), ([.function], "fn"), ([.option], "⌥ Option"), ([.command], "⌘ Command"),
     ]
+
+    /// Whether Ctrl+scroll zooms pages on some keyboard, where the system's
+    /// screen zoom may take it first.
+    private var zoomsWithCtrlSomewhere: Bool {
+        rules.zoomModifiers.contains(.control) && !rules.controlKeysInUse.isSubset(of: [.function])
+    }
 
     private var choice: Binding<Modifiers?> {
         Binding(
@@ -276,6 +284,13 @@ struct WheelSettings: View {
                 }
                 .labelsHidden()
                 .fixedSize()
+            }
+
+            if choice.wrappedValue == [.control], rules.controlKeysInUse != [.control] {
+                Text("Ctrl on keyboards that copy with Ctrl+C, fn on those that copy with fn+C.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
             if choice.wrappedValue == nil {

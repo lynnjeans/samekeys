@@ -68,7 +68,11 @@ import Testing
 
     @Test func otherRulesAreUntouched() {
         let untouched = rules.filter {
-            if case .key(let combo) = $0.trigger { !combo.modifiers.contains(.control) } else { true }
+            switch $0.trigger {
+            case .key(let combo): !combo.modifiers.contains(.control)
+            case .scroll(_, let modifiers): !modifiers.contains(.control)
+            default: true
+            }
         }
         let applied = ControlKey.function.apply(to: rules)
         for rule in untouched {
@@ -90,6 +94,40 @@ import Testing
 
         let older = Data(#"{"schemaVersion": 1, "overrides": []}"#.utf8)
         #expect(try JSONDecoder().decode(Configuration.self, from: older).controlKey == .control)
+    }
+
+    /// Zooming is Ctrl+wheel on Windows, so it follows the choice like the
+    /// Ctrl shortcuts (SK-297).
+    @Test func zoomFollowsTheChoice() {
+        func zoom(_ key: ControlKey, _ modifiers: Modifiers) -> String? {
+            matcher(key).match(.scroll(direction: .up, modifiers: modifiers), in: MatchContext(frontmostBundleID: "com.apple.Safari"))?.id
+        }
+        #expect(zoom(.control, [.control]) == "scroll.zoomIn")
+        #expect(zoom(.control, [.function]) == nil)
+        #expect(zoom(.function, [.function]) == "scroll.zoomIn.fn")
+        #expect(zoom(.function, [.control]) == nil, "Left to the system's screen zoom")
+        #expect(zoom(.both, [.control]) != nil && zoom(.both, [.function]) != nil)
+    }
+
+    @Test func aZoomKeyOtherThanCtrlIsTheSameWhateverTheChoice() {
+        var zoomIn = rules.first { $0.id == "scroll.zoomIn" }!
+        zoomIn.trigger = .scroll(direction: .up, modifiers: [.function])
+        #expect(ControlKey.control.apply(to: [zoomIn]) == [zoomIn])
+        #expect(ControlKey.both.apply(to: [zoomIn]) == [zoomIn])
+    }
+
+    /// A file from before SK-297 that chose Ctrl for zooming kept it as a
+    /// change, which is now what the preset has.
+    @Test func anOlderCtrlZoomChoiceIsNoLongerAChange() throws {
+        var configuration = Configuration()
+        for id in ["scroll.zoomIn", "scroll.zoomOut"] {
+            configuration.overrides.append(.modified(rule: rules.first { $0.id == id }!))
+        }
+        var copy = rules.first { $0.id == "edit.copy" }!
+        copy.isEnabled = false
+        configuration.overrides.append(.modified(rule: copy))
+        let read = try JSONDecoder().decode(Configuration.self, from: JSONEncoder().encode(configuration))
+        #expect(read.overrides == [.modified(rule: copy)])
     }
 
     @Test func aCustomizedTriggerFollowsTheChoiceToo() {

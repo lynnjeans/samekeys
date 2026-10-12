@@ -26,7 +26,7 @@ import Testing
         var copy = try #require(controller.original(of: "edit.copy"))
         copy.trigger = .key(combo: KeyCombo([.control, .shift], .c))
         controller.update(copy)
-        controller.setZoomModifiers([.control])
+        controller.setZoomModifiers([.function])
         let custom = Rule(id: "custom.1", trigger: .mouseButton(number: 3), action: .key(combo: KeyCombo([.command], .w)))
         controller.saveCustomRule(custom)
         controller.setControlKey(.function)
@@ -34,7 +34,7 @@ import Testing
 
         controller.restoreDefaults()
         #expect(!controller.isCustomized("edit.copy"))
-        #expect(controller.zoomModifiers == [.function])
+        #expect(controller.zoomModifiers == [.control])
         #expect(controller.customRules == [custom])
         #expect(controller.controlKey == .function)
         #expect(controller.wheelDirection == .windows)

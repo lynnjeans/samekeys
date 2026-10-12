@@ -175,12 +175,14 @@ enum BuiltInRules {
                  action: .key(combo: KeyCombo([.command], .rightBracket))),
         ]),
         .init(id: "scroll", rules: [
-            // Page zoom, like Ctrl+wheel on Windows. fn is the default modifier
-            // because nothing else uses fn+scroll; Ctrl+scroll can be taken by
-            // the system's screen zoom. ⌘= is what apps expect for ⌘+.
-            Rule(id: "scroll.zoomIn", trigger: .scroll(direction: .up, modifiers: [.function]),
+            // Page zoom, like Ctrl+wheel on Windows. Ctrl here is the Windows
+            // Ctrl, so it follows each keyboard's control key (SK-297): fn+scroll
+            // on a keyboard set to fn, where Ctrl+scroll stays the system's
+            // screen zoom, and Ctrl+scroll on a PC keyboard, which has no fn.
+            // ⌘= is what apps expect for ⌘+.
+            Rule(id: "scroll.zoomIn", trigger: .scroll(direction: .up, modifiers: [.control]),
                  action: .key(combo: KeyCombo([.command], .equal))),
-            Rule(id: "scroll.zoomOut", trigger: .scroll(direction: .down, modifiers: [.function]),
+            Rule(id: "scroll.zoomOut", trigger: .scroll(direction: .down, modifiers: [.control]),
                  action: .key(combo: KeyCombo([.command], .minus))),
         ]),
     ])

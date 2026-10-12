@@ -15,7 +15,8 @@ enum ControlKey: String, Codable, CaseIterable, Sendable {
     ///
     /// Only triggers that hold Ctrl and not fn change, and never those on
     /// keys fn already has a use for (`keepsControl`). An fn version applies
-    /// in terminals too, since fn+C means nothing to a shell.
+    /// in terminals too, since fn+C means nothing to a shell. Scrolling with
+    /// Ctrl, the zoom (SK-297), changes the same way.
     func apply(to rules: [Rule]) -> [Rule] {
         guard self != .control else { return rules }
         return rules.flatMap { rule -> [Rule] in
@@ -31,14 +32,23 @@ enum ControlKey: String, Codable, CaseIterable, Sendable {
     }
 
     private static func fnVersion(of rule: Rule) -> Rule? {
-        guard case .key(var combo) = rule.trigger,
-              combo.modifiers.contains(.control), !combo.modifiers.contains(.function),
-              !combo.key.keepsControl else { return nil }
-        combo.modifiers.remove(.control)
-        combo.modifiers.insert(.function)
         var fn = rule
+        switch rule.trigger {
+        case .key(var combo):
+            guard combo.modifiers.contains(.control), !combo.modifiers.contains(.function),
+                  !combo.key.keepsControl else { return nil }
+            combo.modifiers.remove(.control)
+            combo.modifiers.insert(.function)
+            fn.trigger = .key(combo: combo)
+        case .scroll(let direction, var modifiers):
+            guard modifiers.contains(.control), !modifiers.contains(.function) else { return nil }
+            modifiers.remove(.control)
+            modifiers.insert(.function)
+            fn.trigger = .scroll(direction: direction, modifiers: modifiers)
+        default:
+            return nil
+        }
         fn.id = rule.id + ".fn"
-        fn.trigger = .key(combo: combo)
         if case .except = fn.scope.applications {
             fn.scope.applications = .all
         }

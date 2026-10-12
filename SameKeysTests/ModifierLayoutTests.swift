@@ -60,7 +60,7 @@ import Testing
         let rules = controller.effectiveRules
         #expect(trigger("edit.copy", in: rules) == key([.control], .c))
         #expect(trigger("mouse.back", in: rules) == .mouseButton(number: 4))
-        #expect(trigger("scroll.zoomIn", in: rules) == .scroll(direction: .up, modifiers: [.function]))
+        #expect(trigger("scroll.zoomIn", in: rules) == .scroll(direction: .up, modifiers: [.control]))
     }
 
     @Test func customRulesAreTakenAsRecorded() {

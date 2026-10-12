@@ -155,18 +155,29 @@ import Testing
         return event
     }
 
-    @Test func fnScrollZoomsInAndOut() throws {
+    @Test func ctrlScrollZoomsInAndOut() throws {
         var posted: [CGEvent] = []
         let dispatcher = Dispatcher(frontmostBundleID: { "com.apple.Safari" }, post: { posted.append($0) })
         dispatcher.rules = BuiltInRules.all
 
-        #expect(isConsumed(dispatcher.process(try scroll(lines: 1, [.maskSecondaryFn]), type: .scrollWheel)))
+        #expect(isConsumed(dispatcher.process(try scroll(lines: 1, [.maskControl]), type: .scrollWheel)))
         #expect(posted.map(\.type) == [.keyDown, .keyUp])
         #expect(posted.allSatisfy { $0.keyCode == .equal && Modifiers(flags: $0.flags) == [.command] })
 
         posted = []
-        #expect(isConsumed(dispatcher.process(try scroll(lines: -1, [.maskSecondaryFn]), type: .scrollWheel)))
+        #expect(isConsumed(dispatcher.process(try scroll(lines: -1, [.maskControl]), type: .scrollWheel)))
         #expect(posted.first?.keyCode == .minus)
+    }
+
+    /// With fn playing Ctrl (SK-297), fn+scroll zooms and Ctrl+scroll is the
+    /// system's again, for its screen zoom.
+    @Test func fnScrollZoomsWhereFnPlaysCtrl() throws {
+        var posted: [CGEvent] = []
+        let dispatcher = Dispatcher(frontmostBundleID: { "com.apple.Safari" }, post: { posted.append($0) })
+        dispatcher.rules = ControlKey.function.apply(to: BuiltInRules.all)
+        #expect(isConsumed(dispatcher.process(try scroll(lines: 1, [.maskSecondaryFn]), type: .scrollWheel)))
+        #expect(posted.first?.keyCode == .equal)
+        #expect(isPassThrough(dispatcher.process(try scroll(lines: 1, [.maskControl]), type: .scrollWheel)))
     }
 
     @Test func plainScrollingAndTrackpadsAreLeftAlone() throws {
@@ -174,7 +185,7 @@ import Testing
         let dispatcher = Dispatcher(frontmostBundleID: { nil }, post: { posted.append($0) })
         dispatcher.rules = BuiltInRules.all
         #expect(isPassThrough(dispatcher.process(try scroll(lines: 1), type: .scrollWheel)))
-        #expect(isPassThrough(dispatcher.process(try scroll(lines: 1, [.maskSecondaryFn], phase: 2), type: .scrollWheel)))
+        #expect(isPassThrough(dispatcher.process(try scroll(lines: 1, [.maskControl], phase: 2), type: .scrollWheel)))
         #expect(posted.isEmpty)
     }
 

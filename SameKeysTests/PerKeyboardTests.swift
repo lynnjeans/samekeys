@@ -88,6 +88,18 @@ import Testing
         return result
     }
 
+    /// Scrolls the wheel one line up and says whether the page zoomed in.
+    func zooms(_ dispatcher: Dispatcher, _ flags: CGEventFlags) throws -> Bool {
+        let event = try #require(CGEvent(
+            scrollWheelEvent2Source: nil, units: .line, wheelCount: 1, wheel1: 1, wheel2: 0, wheel3: 0
+        ))
+        event.setIntegerValueField(.scrollWheelEventIsContinuous, value: 0)
+        event.flags = flags
+        // Scrolling names the mouse, never a keyboard, like a click.
+        if case .consume = dispatcher.process(try stamp(event, 0x1_0000_F38D), type: .scrollWheel) { return true }
+        return false
+    }
+
     // MARK: - Configuration
 
     @Test func anOlderFileHasNoKeyboardsAndNoneAreWritten() throws {
@@ -251,6 +263,33 @@ import Testing
         let pcCtrl = try click(.maskControl)
         _ = dispatcher.process(pcCtrl, type: .leftMouseDown)
         #expect(Modifiers(flags: pcCtrl.flags) == [.command])
+    }
+
+    /// The user's Mac (SK-297): the MacBook on fn next to a PC keyboard,
+    /// which has no fn key. Each zooms with the key it presses Ctrl+C with.
+    @Test func eachKeyboardZoomsWithItsOwnCtrl() throws {
+        let (dispatcher, rules) = makeEngine { $0.setControlKey(.function) }
+        rules.setConnectedKeyboards([Self.builtIn, Self.external])
+
+        _ = dispatcher.process(try modifier(.function, .maskSecondaryFn, from: Self.builtInSender), type: .flagsChanged)
+        #expect(try zooms(dispatcher, .maskSecondaryFn), "fn+scroll on the MacBook")
+        _ = dispatcher.process(try modifier(.control, .maskControl, from: Self.builtInSender), type: .flagsChanged)
+        #expect(try !zooms(dispatcher, .maskControl), "Ctrl+scroll on the MacBook stays the system's")
+
+        _ = dispatcher.process(try modifier(.control, .maskControl, from: Self.externalSender), type: .flagsChanged)
+        #expect(try zooms(dispatcher, .maskControl), "Ctrl+scroll on the PC keyboard")
+    }
+
+    @Test func aChosenZoomKeyIsTheSameOnEveryKeyboard() throws {
+        let (dispatcher, rules) = makeEngine { rules in
+            rules.setControlKey(.function)
+            rules.setZoomModifiers([.option])
+        }
+        rules.setConnectedKeyboards([Self.builtIn, Self.external])
+        for sender in [Self.builtInSender, Self.externalSender] {
+            _ = dispatcher.process(try modifier(.option, .maskAlternate, from: sender), type: .flagsChanged)
+            #expect(try zooms(dispatcher, .maskAlternate))
+        }
     }
 
     @Test func winAloneFollowsItsKeyboard() async throws {

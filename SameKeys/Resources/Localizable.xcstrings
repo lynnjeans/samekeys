@@ -4492,6 +4492,64 @@
         }
       }
     },
+    "Ctrl on keyboards that copy with Ctrl+C, fn on those that copy with fn+C." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strg auf Tastaturen, die mit Strg+C kopieren, fn auf denen, die mit fn+C kopieren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl en los teclados que copian con Ctrl+C, fn en los que copian con fn+C."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl sur les claviers qui copient avec Ctrl+C, fn sur ceux qui copient avec fn+C."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl+C でコピーするキーボードでは Ctrl、fn+C でコピーするキーボードでは fn。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl+C로 복사하는 키보드에서는 Ctrl, fn+C로 복사하는 키보드에서는 fn."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl na klawiaturach, które kopiują przez Ctrl+C, fn na tych, które kopiują przez fn+C."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl nos teclados que copiam com Ctrl+C, fn nos que copiam com fn+C."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用 Ctrl+C 复制的键盘按 Ctrl，用 fn+C 复制的键盘按 fn。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用 Ctrl+C 拷貝的鍵盤按 Ctrl，用 fn+C 拷貝的鍵盤按 fn。"
+          }
+        }
+      }
+    },
     "Ctrl or fn" : {
       "localizations" : {
         "de" : {
@@ -19800,6 +19858,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "滾輪朝自己方向捲時頁面向下。觸控式軌跡板和巧控滑鼠仍保持自然捲動。"
+          }
+        }
+      }
+    },
+    "Same key as Ctrl+C" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gleiche Taste wie Strg+C"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La misma tecla que Ctrl+C"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Même touche que Ctrl+C"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl+C と同じキー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ctrl+C와 같은 키"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten sam klawisz co Ctrl+C"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A mesma tecla de Ctrl+C"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与 Ctrl+C 相同的键"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "與 Ctrl+C 相同的鍵"
           }
         }
       }

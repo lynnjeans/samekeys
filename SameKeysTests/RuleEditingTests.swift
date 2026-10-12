@@ -113,15 +113,15 @@ import Testing
     @Test func theZoomModifierChangesBothZoomRules() {
         let applied = Applied()
         let controller = makeController(applied)
-        #expect(controller.zoomModifiers == [.function])
-
-        controller.setZoomModifiers([.control])
         #expect(controller.zoomModifiers == [.control])
+
+        controller.setZoomModifiers([.option])
+        #expect(controller.zoomModifiers == [.option])
         let zoom = applied.latest.filter { $0.id.hasPrefix("scroll.") }.map(\.trigger)
-        #expect(zoom == [.scroll(direction: .up, modifiers: [.control]), .scroll(direction: .down, modifiers: [.control])])
+        #expect(zoom == [.scroll(direction: .up, modifiers: [.option]), .scroll(direction: .down, modifiers: [.option])])
         #expect(controller.isCustomized("scroll.zoomIn") && controller.isCustomized("scroll.zoomOut"))
 
-        controller.setZoomModifiers([.function])
+        controller.setZoomModifiers([.control])
         #expect(controller.configuration.overrides.isEmpty, "Back to the preset")
     }
 

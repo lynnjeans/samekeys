@@ -100,7 +100,7 @@ extension DispatcherTests {
             dispatcher.rules = BuiltInRules.all
             dispatcher.wheelDirection = direction
             // Under natural scrolling, rolling the wheel up arrives negated.
-            #expect(isConsumed(dispatcher.process(try naturalWheel(lines: -1, [.maskSecondaryFn]), type: .scrollWheel)))
+            #expect(isConsumed(dispatcher.process(try naturalWheel(lines: -1, [.maskControl]), type: .scrollWheel)))
             #expect(posted.first?.keyCode == .equal, "Wheel up zooms in with \(direction)")
         }
     }

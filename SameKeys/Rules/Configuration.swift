@@ -248,6 +248,19 @@ extension Configuration: Codable {
         modifierLayout = try container.decodeIfPresent(ModifierLayout.self, forKey: .modifierLayout) ?? .pcKeyboard
         keyboards = try container.decodeIfPresent([KeyboardSettings].self, forKey: .keyboards) ?? []
         foldSystemGroup()
+        dropZoomOverridesMatchingPreset()
+    }
+
+    /// The zoom rules moved from fn to Ctrl, the Windows Ctrl that follows
+    /// each keyboard's control key (SK-297). A file that chose Ctrl kept it as
+    /// a change, which is now the preset itself, so the entries would show
+    /// as customized for nothing. Done on reading, like `foldSystemGroup`.
+    private mutating func dropZoomOverridesMatchingPreset() {
+        let zoom = BuiltInRules.all.filter { $0.id.hasPrefix("scroll.") }
+        overrides.removeAll { override in
+            guard case .modified(let rule) = override else { return false }
+            return zoom.contains(rule)
+        }
     }
 
     /// The System group, Force Quit alone, went into Apps & System (SK-285).

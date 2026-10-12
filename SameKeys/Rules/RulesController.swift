@@ -231,7 +231,8 @@ final class RulesController {
     }
 
     /// Changes the zoom modifier on both zoom rules. Choosing the preset's
-    /// fn again drops the customization.
+    /// Ctrl, which follows each keyboard's control key, drops the
+    /// customization.
     func setZoomModifiers(_ modifiers: Modifiers) {
         for var rule in rules(inGroup: "scroll") {
             guard case .scroll(let direction, _) = rule.trigger else { continue }
