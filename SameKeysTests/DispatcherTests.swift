@@ -1,4 +1,5 @@
 import CoreGraphics
+import Foundation
 import Testing
 
 @MainActor
@@ -17,6 +18,36 @@ import Testing
     }
 
     /// The replacement event, or nil if the disposition was something else.
+    @Test func ctrlCReachesATerminalInsideAnotherApp() throws {
+        var inTerminal = true
+        let dispatcher = Dispatcher(frontmostBundleID: { "com.anthropic.claudefordesktop" }, isInTerminal: { inTerminal })
+        dispatcher.rules = BuiltInRules.all
+        #expect(isPassThrough(dispatcher.process(try key(.c, down: true, .maskControl), type: .keyDown)))
+        _ = dispatcher.process(try key(.c, down: false, .maskControl), type: .keyUp)
+        inTerminal = false
+        let copy = replacement(dispatcher.process(try key(.c, down: true, .maskControl), type: .keyDown))
+        #expect(copy.map { Modifiers(flags: $0.flags) } == [.command])
+    }
+
+    /// The class xterm.js gives the text area that has focus, as VS Code and
+    /// the Claude app report it.
+    @Test func xtermsFocusIsATerminal() {
+        #expect(EmbeddedTerminal.isTerminal(classList: ["xterm-helper-textarea"]))
+        #expect(!EmbeddedTerminal.isTerminal(classList: ["inputarea", "monaco-mouse-cursor-text"]))
+        #expect(!EmbeddedTerminal.isTerminal(classList: []))
+    }
+
+    @Test func electronAppsAreToldByTheirFramework() throws {
+        let app = FileManager.default.temporaryDirectory.appending(path: "SameKeysTests-\(UUID().uuidString).app")
+        defer { try? FileManager.default.removeItem(at: app) }
+        try FileManager.default.createDirectory(at: app.appending(path: "Contents/Frameworks"), withIntermediateDirectories: true)
+        #expect(!ElectronAccessibility.isElectron(app))
+        try FileManager.default.createDirectory(
+            at: app.appending(path: "Contents/Frameworks/Electron Framework.framework"), withIntermediateDirectories: true
+        )
+        #expect(ElectronAccessibility.isElectron(app))
+    }
+
     func replacement(_ disposition: Dispatcher.Disposition) -> CGEvent? {
         if case .replace(let event) = disposition { event } else { nil }
     }

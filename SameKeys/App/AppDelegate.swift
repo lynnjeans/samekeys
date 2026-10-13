@@ -11,6 +11,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var clipboardPanel = ClipboardPanelController(clipboard: clipboard)
     lazy var quickSwitch = QuickSwitch(locations: FileLocations())
     let frontmost = FrontmostApplication()
+    /// Terminals inside other apps, and Accessibility switched on in the
+    /// Electron apps they live in (SK-298).
+    let embeddedTerminal = EmbeddedTerminal()
+    let electronAccessibility = ElectronAccessibility()
     let inputSources = InputSourceSwitcher()
     let keyboards = KeyboardList()
     let dockClick = DockClick(lookUp: DockWindow.target(forClickAt:), minimize: DockWindow.minimize)
@@ -28,6 +32,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         },
         isEditingText: FocusedElement.isEditingText,
         isInFileDialog: FileDialog.isFocused,
+        // Not while one of SameKeys's own panels has the keyboard: the app
+        // behind does not get the keys then.
+        isInTerminal: { [frontmost, embeddedTerminal] in
+            guard NSApp.keyWindow == nil, let pid = frontmost.processIdentifier else { return false }
+            return embeddedTerminal.hasFocus(in: pid, of: frontmost.bundleID)
+        },
         fileDialog: { [quickSwitch] in quickSwitch.perform($0) },
         isClipboardHistoryOn: { [weak self] in self?.clipboard.isEnabled ?? false },
         toggleClipboardHistory: { [weak self] in self?.clipboardPanel.toggle() },
@@ -70,6 +80,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Reading the configuration installs the first set of rules.
         _ = rules.effectiveRules
         permissionMonitor.start()
+        electronAccessibility.start()
         secureInput.start()
         otherRemappers.start()
         keyboards.onChange = { [rules] in rules.setConnectedKeyboards($0) }
