@@ -97,6 +97,7 @@ import Testing
         dispatcher.leftMouse = { _, type in seen.append(type) }
         for type in [CGEventType.leftMouseDown, .leftMouseUp] {
             let event = try #require(CGEvent(mouseEventSource: nil, mouseType: type, mouseCursorPosition: icon, mouseButton: .left))
+            event.flags = []
             guard case .passThrough = dispatcher.process(event, type: type) else {
                 Issue.record("A left click must never be changed or swallowed")
                 return

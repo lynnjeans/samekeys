@@ -137,6 +137,7 @@ import Testing
         _ = dispatcher.process(try modifier(.command, Self.leftCommand), type: .flagsChanged)
         let click = try #require(CGEvent(mouseEventSource: nil, mouseType: .leftMouseDown,
                                          mouseCursorPosition: .zero, mouseButton: .left))
+        click.flags = Self.leftCommand
         _ = dispatcher.process(click, type: .leftMouseDown)
         _ = dispatcher.process(try modifier(.command, []), type: .flagsChanged)
 

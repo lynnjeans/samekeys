@@ -32,6 +32,7 @@ import Testing
     @Test func theEventsSenderNamesItsKeyboard() throws {
         let (source, asked) = source([0x1000035D4: Self.external])
         let event = try #require(CGEvent(keyboardEventSource: nil, virtualKey: 0, keyDown: true))
+        event.flags = []
         event.setIntegerValueField(try #require(CGEventField(rawValue: 87)), value: 0x1000035D4)
         #expect(event.senderID == 0x1000035D4)
         #expect(source.keyboard(of: event) == Self.external)
@@ -41,6 +42,7 @@ import Testing
     @Test func anEventPostedBySoftwareHasNoKeyboard() throws {
         let (source, asked) = source([:])
         let event = try #require(CGEvent(keyboardEventSource: nil, virtualKey: 0, keyDown: true))
+        event.flags = []
         #expect(event.senderID == 0)
         #expect(source.keyboard(of: event) == nil)
         #expect(asked().isEmpty, "No sender, nothing to look up")

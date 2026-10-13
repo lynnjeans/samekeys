@@ -67,6 +67,7 @@ import Testing
         let event = try #require(CGEvent(mouseEventSource: nil, mouseType: .otherMouseDown,
                                          mouseCursorPosition: .zero, mouseButton: .center))
         event.setIntegerValueField(.mouseEventButtonNumber, value: 3) // button 4, counted from 1
+        event.flags = []
         _ = dispatcher.process(event, type: .otherMouseDown)
         // The shortcut is read and posted once the tap callback has returned.
         try await Task.sleep(for: .milliseconds(50))
@@ -90,6 +91,7 @@ import Testing
         dispatcher.rules = [Rule(id: "test.key", trigger: .key(combo: KeyCombo(.f19)),
                                  action: .systemAction(.missionControl))]
         let down = try #require(CGEvent(keyboardEventSource: nil, virtualKey: KeyCode.f19.rawValue, keyDown: true))
+        down.flags = []
         guard case .consume = dispatcher.process(down, type: .keyDown) else {
             Issue.record("The key press is taken")
             return

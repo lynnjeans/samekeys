@@ -99,6 +99,7 @@ import Testing
         let down = try #require(CGEvent(keyboardEventSource: nil, virtualKey: KeyCode.g.rawValue, keyDown: true))
         down.flags = .maskControl
         let up = try #require(CGEvent(keyboardEventSource: nil, virtualKey: KeyCode.g.rawValue, keyDown: false))
+        up.flags = .maskControl
         #expect(isConsumed(dispatcher.process(down, type: .keyDown)))
         #expect(isConsumed(dispatcher.process(up, type: .keyUp)))
         // Carried out once the tap callback has returned.

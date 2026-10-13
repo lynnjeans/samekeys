@@ -149,6 +149,7 @@ import Testing
         let press = try #require(CGEvent(mouseEventSource: nil, mouseType: .otherMouseDown,
                                          mouseCursorPosition: .zero, mouseButton: .center))
         press.setIntegerValueField(.mouseEventButtonNumber, value: 3)
+        press.flags = []
         #expect(isConsumed(dispatcher.process(press, type: .otherMouseDown)))
         try await Task.sleep(for: .milliseconds(50))
         #expect(history.toggles == 1)

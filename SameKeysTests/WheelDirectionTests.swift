@@ -16,6 +16,7 @@ import Testing
         let event = try #require(CGEvent(
             scrollWheelEvent2Source: nil, units: .line, wheelCount: 2, wheel1: 3, wheel2: -1, wheel3: 0
         ))
+        event.flags = []
         let before = (
             event.getIntegerValueField(.scrollWheelEventDeltaAxis1),
             event.getDoubleValueField(.scrollWheelEventFixedPtDeltaAxis1),

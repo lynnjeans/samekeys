@@ -89,6 +89,7 @@ import Testing
 
     @Test func releasesTriggerNothing() throws {
         let event = try #require(CGEvent(keyboardEventSource: nil, virtualKey: KeyCode.c.rawValue, keyDown: false))
+        event.flags = []
         #expect(Trigger(event: event, type: .keyUp) == nil)
     }
 
@@ -98,8 +99,6 @@ import Testing
             mouseCursorPosition: .zero, mouseButton: .center
         ))
         event.setIntegerValueField(.mouseEventButtonNumber, value: 3)
-        // An event made without a source may carry whatever modifier is held
-        // on the Mac while the test runs; this one failed once that way.
         event.flags = []
         #expect(Trigger(event: event, type: .otherMouseDown) == .mouseButton(number: 4))
     }
@@ -126,6 +125,7 @@ import Testing
         event.setIntegerValueField(.scrollWheelEventIsContinuous, value: continuous ? 1 : 0)
         event.setIntegerValueField(.scrollWheelEventScrollPhase, value: phase)
         event.setIntegerValueField(.scrollWheelEventMomentumPhase, value: momentum)
+        event.flags = []
         return event
     }
 
