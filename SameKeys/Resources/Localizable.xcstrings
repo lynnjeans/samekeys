@@ -4492,60 +4492,60 @@
         }
       }
     },
-    "Ctrl on keyboards that copy with Ctrl+C, fn on those that copy with fn+C." : {
+    "Ctrl (as set on the Shortcuts page)" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strg auf Tastaturen, die mit Strg+C kopieren, fn auf denen, die mit fn+C kopieren."
+            "value" : "Strg (wie auf der Seite Kurzbefehle eingestellt)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl en los teclados que copian con Ctrl+C, fn en los que copian con fn+C."
+            "value" : "Ctrl (según la página Atajos)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl sur les claviers qui copient avec Ctrl+C, fn sur ceux qui copient avec fn+C."
+            "value" : "Ctrl (selon la page Raccourcis)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C でコピーするキーボードでは Ctrl、fn+C でコピーするキーボードでは fn。"
+            "value" : "Ctrl（ショートカットページの設定どおり）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C로 복사하는 키보드에서는 Ctrl, fn+C로 복사하는 키보드에서는 fn."
+            "value" : "Ctrl (단축키 페이지 설정에 따름)"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl na klawiaturach, które kopiują przez Ctrl+C, fn na tych, które kopiują przez fn+C."
+            "value" : "Ctrl (jak ustawiono na stronie Skróty)"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl nos teclados que copiam com Ctrl+C, fn nos que copiam com fn+C."
+            "value" : "Ctrl (conforme a página Atalhos)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用 Ctrl+C 复制的键盘按 Ctrl，用 fn+C 复制的键盘按 fn。"
+            "value" : "Ctrl（跟随快捷键页的设置）"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用 Ctrl+C 拷貝的鍵盤按 Ctrl，用 fn+C 拷貝的鍵盤按 fn。"
+            "value" : "Ctrl（跟隨快速鍵頁的設定）"
           }
         }
       }
@@ -6460,6 +6460,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每個鍵盤用各自選定的鍵按 Ctrl 快速鍵。%@"
+          }
+        }
+      }
+    },
+    "Each keyboard zooms with the key set for its Ctrl shortcuts." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Tastatur zoomt mit der Taste, die für ihre Strg-Kurzbefehle eingestellt ist."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada teclado amplía con la tecla elegida para sus atajos de Ctrl."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque clavier zoome avec la touche choisie pour ses raccourcis Ctrl."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "各キーボードは、その Ctrl ショートカット用に設定したキーでズームします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "각 키보드는 Ctrl 단축키용으로 설정한 키로 확대/축소합니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Każda klawiatura powiększa klawiszem ustawionym dla jej skrótów Ctrl."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada teclado amplia com a tecla definida para os atalhos de Ctrl."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每把键盘用各自 Ctrl 快捷键所设的键缩放。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每把鍵盤用各自 Ctrl 快速鍵所設的鍵縮放。"
           }
         }
       }
@@ -14120,6 +14178,122 @@
         }
       }
     },
+    "Now fn+scroll or Ctrl+scroll." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt fn+Scrollen oder Strg+Scrollen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora fn+desplazamiento o Ctrl+desplazamiento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actuellement fn+défilement ou Ctrl+défilement."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在は fn+スクロール または Ctrl+スクロール。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 fn+스크롤 또는 Ctrl+스크롤."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teraz fn+przewijanie lub Ctrl+przewijanie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agora fn+rolagem ou Ctrl+rolagem."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "现在是 fn+滚轮 或 Ctrl+滚轮。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在是 fn+滾輪 或 Ctrl+滾輪。"
+          }
+        }
+      }
+    },
+    "Now fn+scroll." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt fn+Scrollen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora fn+desplazamiento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actuellement fn+défilement."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在は fn+スクロール。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 fn+스크롤."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teraz fn+przewijanie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agora fn+rolagem."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "现在是 fn+滚轮。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在是 fn+滾輪。"
+          }
+        }
+      }
+    },
     "Numbers Spreadsheet" : {
       "localizations" : {
         "de" : {
@@ -19858,64 +20032,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "滾輪朝自己方向捲時頁面向下。觸控式軌跡板和巧控滑鼠仍保持自然捲動。"
-          }
-        }
-      }
-    },
-    "Same key as Ctrl+C" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gleiche Taste wie Strg+C"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La misma tecla que Ctrl+C"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Même touche que Ctrl+C"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ctrl+C と同じキー"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ctrl+C와 같은 키"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ten sam klawisz co Ctrl+C"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A mesma tecla de Ctrl+C"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "与 Ctrl+C 相同的键"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "與 Ctrl+C 相同的鍵"
           }
         }
       }

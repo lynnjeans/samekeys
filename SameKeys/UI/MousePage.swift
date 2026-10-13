@@ -242,8 +242,22 @@ struct WheelSettings: View {
     /// Ctrl first: it is the Windows Ctrl, pressed as each keyboard presses
     /// its Ctrl shortcuts (SK-297), and the default.
     private static let singles: [(Modifiers, LocalizedStringKey)] = [
-        ([.control], "Same key as Ctrl+C"), ([.function], "fn"), ([.option], "⌥ Option"), ([.command], "⌘ Command"),
+        ([.control], "Ctrl (as set on the Shortcuts page)"), ([.function], "fn"), ([.option], "⌥ Option"), ([.command], "⌘ Command"),
     ]
+
+    /// What Ctrl comes to on this Mac's keyboards, when that is not simply
+    /// Ctrl.
+    private var ctrlZoomNote: LocalizedStringKey? {
+        let keys = rules.controlKeysInUse
+        guard keys.count == 1, let key = keys.first else {
+            return "Each keyboard zooms with the key set for its Ctrl shortcuts."
+        }
+        switch key {
+        case .control: return nil
+        case .function: return "Now fn+scroll."
+        case .both: return "Now fn+scroll or Ctrl+scroll."
+        }
+    }
 
     /// Whether Ctrl+scroll zooms pages on some keyboard, where the system's
     /// screen zoom may take it first.
@@ -286,8 +300,8 @@ struct WheelSettings: View {
                 .fixedSize()
             }
 
-            if choice.wrappedValue == [.control], rules.controlKeysInUse != [.control] {
-                Text("Ctrl on keyboards that copy with Ctrl+C, fn on those that copy with fn+C.")
+            if choice.wrappedValue == [.control], let ctrlZoomNote {
+                Text(ctrlZoomNote)
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
