@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0003163AB21B72D53B2D4231 /* FileLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969236BF705E2A19583F78E2 /* FileLocations.swift */; };
+		03933C2063EE33E1B881182F /* EmbeddedTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D639FA508552F56DEA59B4 /* EmbeddedTerminal.swift */; };
 		0A3CD3ED23FCE15E6A47131D /* WindowsPresetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611CE5D04202255E3C7965C3 /* WindowsPresetTests.swift */; };
 		0C4217EA8E12A4D154E667B7 /* SameKeysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C3A713FED120E4815AA24 /* SameKeysApp.swift */; };
 		1070D65EFEBA8F0083DDF44E /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A47015A7322EEF4F895A9C5 /* MainWindow.swift */; };
@@ -95,6 +96,7 @@
 		68E2D8921665F243345535D6 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ABF01037525EDFC4FA1DE0 /* Rule.swift */; };
 		69D442619E8B6F6C0154906E /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C2AA4DCD0B30FFFD96950 /* FinderSync.swift */; };
 		6B4497A17DD0D5F13285B593 /* DispatchTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A804AB65A0E1A7C94CAC0D27 /* DispatchTrace.swift */; };
+		6C5690D4E2CE908BF020995B /* EmbeddedTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D639FA508552F56DEA59B4 /* EmbeddedTerminal.swift */; };
 		6DB15467A416BCAB3A012146 /* ClipboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3320C513C4398893048C3E8 /* ClipboardController.swift */; };
 		6EB3CB87FA23749C6F8E7F14 /* KeyboardListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6881B8B7CF44B26DB518078E /* KeyboardListTests.swift */; };
 		6F1050CE31FC5E28E59E75BF /* PastedPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408853C20209088A7A98B32E /* PastedPath.swift */; };
@@ -316,6 +318,7 @@
 		6D6299C7B5B6C1C9E52D8111 /* FileDialogActionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDialogActionPicker.swift; sourceTree = "<group>"; };
 		6E3132A1BE6D6E6A1CF95977 /* OnboardingControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingControllerTests.swift; sourceTree = "<group>"; };
 		6FB5D58E6FB3FD582BB0173C /* EventTapSelfTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapSelfTest.swift; sourceTree = "<group>"; };
+		71D639FA508552F56DEA59B4 /* EmbeddedTerminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTerminal.swift; sourceTree = "<group>"; };
 		7378AAEEF7DD05726535444A /* ControlKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlKey.swift; sourceTree = "<group>"; };
 		73E76B2127DD1445B99B8A52 /* FinderMenuSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderMenuSender.swift; sourceTree = "<group>"; };
 		767A5AF3CFFEC11668587F15 /* WindowActionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowActionPicker.swift; sourceTree = "<group>"; };
@@ -677,6 +680,7 @@
 				AC12EBF136433446415F3FBC /* DockClick.swift */,
 				FA61E6E979C53BEFC3994698 /* DockWindow.swift */,
 				87A099BE32F4A33DD0D72F65 /* DownstreamProbe.swift */,
+				71D639FA508552F56DEA59B4 /* EmbeddedTerminal.swift */,
 				A89C62679F354E927C57C31D /* EventTap.swift */,
 				6FB5D58E6FB3FD582BB0173C /* EventTapSelfTest.swift */,
 				50249C29F25567DFB45AC5D6 /* EventTrigger.swift */,
@@ -896,6 +900,7 @@
 				AB5ADF094D1DD97FF59E1658 /* DockPresence.swift in Sources */,
 				A381628EA9CDC2C8E33301E3 /* DockWindow.swift in Sources */,
 				38D17E7FE7620CD6E8BD950B /* DownstreamProbe.swift in Sources */,
+				03933C2063EE33E1B881182F /* EmbeddedTerminal.swift in Sources */,
 				63C20AA21BBD1AD52BEC566F /* EngineController.swift in Sources */,
 				C1F06A363AE335790D41EBF2 /* EventTap.swift in Sources */,
 				64D8F77276A5D6239EA670A3 /* EventTapSelfTest.swift in Sources */,
@@ -1018,6 +1023,7 @@
 				641AF616CAB9559EA69A9681 /* DispatcherTests.swift in Sources */,
 				8C40BCC9BD209530421D5F13 /* DockClick.swift in Sources */,
 				2820C3E8B15852C7F8718CE3 /* DockClickTests.swift in Sources */,
+				6C5690D4E2CE908BF020995B /* EmbeddedTerminal.swift in Sources */,
 				2FA84B4EC616D94419DF5A1A /* EngineController.swift in Sources */,
 				B900581DC8688B584BA34D6D /* EngineControllerTests.swift in Sources */,
 				A09A5261A68DFCDB5E4673A2 /* EventTrigger.swift in Sources */,

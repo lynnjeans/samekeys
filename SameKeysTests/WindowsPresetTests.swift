@@ -165,6 +165,35 @@ import Testing
         #expect(match(KeyCombo([.option], .tab), in: "com.apple.Terminal") == "win.switchApp")
     }
 
+    /// The terminal panel of VS Code or the Claude app (SK-298): the Ctrl
+    /// shortcuts stand aside as in Terminal, the rest of the preset does not,
+    /// and fn versions still apply.
+    @Test func ctrlShortcutsAreLeftAloneInTerminalsInsideOtherApps() {
+        let context = MatchContext(frontmostBundleID: "com.microsoft.VSCode")
+        let copy = Trigger.key(combo: KeyCombo([.control], .c))
+        #expect(matcher.match(copy, in: context, isInTerminal: { true }) == nil)
+        #expect(matcher.match(copy, in: context, isInTerminal: { false })?.id == "edit.copy")
+        #expect(matcher.match(.key(combo: KeyCombo([.option], .tab)), in: context, isInTerminal: { true })?.id == "win.switchApp")
+        let fn = RuleMatcher(rules: ControlKey.both.apply(to: BuiltInRules.all))
+        #expect(fn.match(.key(combo: KeyCombo([.function], .c)), in: context, isInTerminal: { true })?.id == "edit.copy.fn")
+    }
+
+    /// Asking the app what has focus costs a round trip: only rules that
+    /// stand aside in terminals ask, and only once per press.
+    @Test func focusIsOnlyAskedForTerminalsWhenARuleNeedsIt() {
+        var asked = 0
+        let isInTerminal = { asked += 1; return false }
+        let context = MatchContext(frontmostBundleID: "com.apple.TextEdit")
+        _ = matcher.match(.key(combo: KeyCombo([.option], .tab)), in: context, isInTerminal: isInTerminal)
+        _ = matcher.match(.mouseButton(number: 4), in: context, isInTerminal: isInTerminal)
+        #expect(asked == 0)
+        _ = matcher.match(.key(combo: KeyCombo([.control], .c)), in: context, isInTerminal: isInTerminal)
+        #expect(asked == 1)
+        _ = matcher.match(.key(combo: KeyCombo([.control], .c)), in: MatchContext(frontmostBundleID: "com.apple.Terminal"),
+                          isInTerminal: isInTerminal)
+        #expect(asked == 1, "Not asked in Terminal itself")
+    }
+
     @Test func onlyTheWinKeyGroupStartsOff() {
         #expect(preset.groups.filter { !$0.isEnabledByDefault }.map(\.id) == ["winKey"])
         // ⌘ with a key, or ⌘ tapped on its own (Win alone).

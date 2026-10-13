@@ -55,6 +55,8 @@ final class Dispatcher {
     private let frontmostBundleID: @MainActor () -> String?
     private let isEditingText: @MainActor () -> Bool
     private let isInFileDialog: @MainActor () -> Bool
+    /// Whether focus is in a terminal inside another app (SK-298).
+    private let isInTerminal: @MainActor () -> Bool
 
     /// Keys whose press was remapped and that are still held. Their repeats
     /// and release are rewritten to match the press, whatever modifiers are
@@ -109,6 +111,7 @@ final class Dispatcher {
         frontmostBundleID: @escaping @MainActor () -> String?,
         isEditingText: @escaping @MainActor () -> Bool = { false },
         isInFileDialog: @escaping @MainActor () -> Bool = { false },
+        isInTerminal: @escaping @MainActor () -> Bool = { false },
         post: @escaping @MainActor (CGEvent) -> Void = { SyntheticEvent.post($0) },
         openApplication: @escaping @MainActor (String) -> Void = { Dispatcher.launch($0) },
         systemShortcuts: @escaping @MainActor () -> SymbolicHotKeys = { SymbolicHotKeys.current() },
@@ -127,6 +130,7 @@ final class Dispatcher {
         self.frontmostBundleID = frontmostBundleID
         self.isEditingText = isEditingText
         self.isInFileDialog = isInFileDialog
+        self.isInTerminal = isInTerminal
         self.fileDialog = fileDialog
         self.isClipboardHistoryOn = isClipboardHistoryOn
         self.toggleClipboardHistory = toggleClipboardHistory
@@ -233,7 +237,7 @@ final class Dispatcher {
         let rule = matcher(for: modifierKeyboard).match(
             trigger, in: MatchContext(frontmostBundleID: frontmostBundleID()),
             isEditingText: isEditingText, isInFileDialog: isInFileDialog,
-            isClipboardHistoryOn: isClipboardHistoryOn
+            isClipboardHistoryOn: isClipboardHistoryOn, isInTerminal: isInTerminal
         )
         report(trigger, keyboard: .lastModifier(tracedModifierKeyboard), rule: rule)
         guard let rule else { return }
@@ -469,7 +473,7 @@ final class Dispatcher {
         return matcher(for: keyboardID(of: event, type: type)).match(
             trigger, in: MatchContext(frontmostBundleID: frontmostBundleID()),
             isEditingText: isEditingText, isInFileDialog: isInFileDialog,
-            isClipboardHistoryOn: isClipboardHistoryOn
+            isClipboardHistoryOn: isClipboardHistoryOn, isInTerminal: isInTerminal
         )
     }
 
