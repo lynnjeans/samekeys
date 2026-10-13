@@ -9,6 +9,8 @@ import OSLog
 @MainActor
 final class FrontmostApplication {
     private(set) var bundleID: String?
+    /// Its process, for asking it over Accessibility what has focus.
+    private(set) var processIdentifier: pid_t?
 
     /// Told whenever the frontmost application changes, for features that
     /// have to act on the change rather than read the value per event: the
@@ -20,6 +22,7 @@ final class FrontmostApplication {
 
     init() {
         bundleID = NSWorkspace.shared.frontmostApplication?.bundleIdentifier
+        processIdentifier = NSWorkspace.shared.frontmostApplication?.processIdentifier
         observer = NSWorkspace.shared.notificationCenter.addObserver(
             forName: NSWorkspace.didActivateApplicationNotification,
             object: nil,
@@ -27,7 +30,11 @@ final class FrontmostApplication {
         ) { [weak self] notification in
             let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
             let bundleID = app?.bundleIdentifier
-            MainActor.assumeIsolated { self?.update(bundleID) }
+            let pid = app?.processIdentifier
+            MainActor.assumeIsolated {
+                self?.processIdentifier = pid
+                self?.update(bundleID)
+            }
         }
     }
 

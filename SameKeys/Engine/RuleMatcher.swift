@@ -38,17 +38,26 @@ struct RuleMatcher: Sendable {
     ///   - isClipboardHistoryOn: asked only when a candidate rule opens the
     ///     clipboard history. While it is off, its key does what it did
     ///     before: Win+V as ⌘V pastes (KB-245).
+    ///   - isInTerminal: asked only when a candidate rule stands aside in
+    ///     terminals, whether focus is in a terminal inside another app, such
+    ///     as VS Code's (SK-298). There the rule stands aside too.
     func match(
         _ trigger: Trigger,
         in context: MatchContext,
         isEditingText: () -> Bool = { false },
         isInFileDialog: () -> Bool = { false },
-        isClipboardHistoryOn: () -> Bool = { false }
+        isClipboardHistoryOn: () -> Bool = { false },
+        isInTerminal: () -> Bool = { false }
     ) -> Rule? {
         var editing: Bool?
         var inDialog: Bool?
+        var inTerminal: Bool?
         return candidates[trigger]?.first { rule in
             guard rule.scope.admits(context) else { return false }
+            if rule.scope.applications.standsAsideInTerminals {
+                if inTerminal == nil { inTerminal = isInTerminal() }
+                guard inTerminal == false else { return false }
+            }
             if rule.action == .clipboardHistory, !isClipboardHistoryOn() { return false }
             if let dialogAction = rule.action.fileDialogAction,
                !(dialogAction.worksInFinder && context.frontmostBundleID == BuiltInRules.finderID) {
@@ -77,6 +86,12 @@ extension Scope {
 }
 
 extension ApplicationFilter {
+    /// Leaves terminals out, as the Ctrl shortcuts do: then terminals inside
+    /// other apps are left out too.
+    var standsAsideInTerminals: Bool {
+        if case .except(let bundleIDs) = self { bundleIDs.contains(where: BuiltInRules.terminals.contains) } else { false }
+    }
+
     func admits(_ bundleID: String?) -> Bool {
         switch self {
         case .all:

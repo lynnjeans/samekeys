@@ -167,6 +167,7 @@ targets:
       - path: SameKeys/Engine/TapBreaker.swift
       - path: SameKeys/Engine/KeyboardSource.swift
       - path: SameKeys/Engine/KeyboardList.swift
+      - path: SameKeys/Engine/EmbeddedTerminal.swift
       - path: SameKeys/UI/KeyboardChoices.swift
       - path: SameKeys/Window/WindowGeometry.swift
       - path: SameKeys/Window/WindowAction.swift
