@@ -72,6 +72,10 @@ enum BuiltInRules {
             outsideTerminals("edit.save", KeyCombo([.control], .s), KeyCombo([.command], .s)),
             outsideTerminals("edit.find", KeyCombo([.control], .f), KeyCombo([.command], .f)),
             outsideTerminals("edit.new", KeyCombo([.control], .n), KeyCombo([.command], .n)),
+            // A new folder in Finder, as in File Explorer, and a private
+            // window in browsers: ⌘⇧N in each, as Ctrl+Shift+N on Windows
+            // (SK-299).
+            outsideTerminals("edit.newFolder", KeyCombo([.control, .shift], .n), KeyCombo([.shift, .command], .n)),
             outsideTerminals("edit.open", KeyCombo([.control], .o), KeyCombo([.command], .o)),
             outsideTerminals("edit.print", KeyCombo([.control], .p), KeyCombo([.command], .p)),
         ]),

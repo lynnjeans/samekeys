@@ -12,6 +12,21 @@ import Testing
 
     /// Ctrl+=, Ctrl+- and Ctrl+0 zoom as on Windows (KB-225), outside
     /// terminals, and follow the fn / Ctrl choice like the rest of the group.
+    /// Ctrl+Shift+N: a new folder in Finder, a private window in browsers
+    /// (SK-299).
+    @Test func ctrlShiftNIsCommandShiftNOutsideTerminals() {
+        let trigger = Trigger.key(combo: KeyCombo([.control, .shift], .n))
+        for app in ["com.apple.finder", "com.google.Chrome", "com.apple.Safari"] {
+            let rule = matcher.match(trigger, in: MatchContext(frontmostBundleID: app))
+            #expect(rule?.id == "edit.newFolder", "\(app)")
+            #expect(rule?.action == .key(combo: KeyCombo([.shift, .command], .n)))
+        }
+        #expect(matcher.match(trigger, in: MatchContext(frontmostBundleID: "com.apple.Terminal")) == nil)
+        let fn = RuleMatcher(rules: ControlKey.function.apply(to: BuiltInRules.all))
+        #expect(fn.match(.key(combo: KeyCombo([.function, .shift], .n)), in: MatchContext(frontmostBundleID: "com.apple.finder"))?.id
+                == "edit.newFolder.fn")
+    }
+
     @Test func zoomKeysZoomOutsideTerminals() {
         let zoom: [(String, KeyCode)] = [("browser.zoomIn", .equal), ("browser.zoomOut", .minus), ("browser.zoomReset", .zero)]
         for (id, key) in zoom {

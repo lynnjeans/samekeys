@@ -743,7 +743,7 @@ enum RuleNames {
     private static let names: [String: String] = [
         "edit.copy": String(localized: "Copy"), "edit.cut": String(localized: "Cut"), "edit.paste": String(localized: "Paste"), "edit.undo": String(localized: "Undo"),
         "edit.redo": String(localized: "Redo"), "edit.selectAll": String(localized: "Select all"), "edit.save": String(localized: "Save"), "edit.find": String(localized: "Find"),
-        "edit.new": String(localized: "New"), "edit.open": String(localized: "Open"), "edit.print": String(localized: "Print"),
+        "edit.new": String(localized: "New"), "edit.newFolder": String(localized: "New folder / private window"), "edit.open": String(localized: "Open"), "edit.print": String(localized: "Print"),
         "nav.lineStart": String(localized: "Line start"), "nav.lineEnd": String(localized: "Line end"),
         "nav.selectLineStart": String(localized: "Select to line start"), "nav.selectLineEnd": String(localized: "Select to line end"),
         "nav.docStart": String(localized: "Document start"), "nav.docEnd": String(localized: "Document end"),
