@@ -125,4 +125,69 @@ extension DispatcherTests {
         #expect(paste.keyCode == .v)
         #expect(Modifiers(flags: paste.flags) == [.command])
     }
+
+    // MARK: - Finder's Ctrl+V
+
+    /// Presses and releases Ctrl+`key` in Finder; the modifiers that went out.
+    func finderPress(_ key: KeyCode, on dispatcher: Dispatcher, fn: Bool = false) throws -> Modifiers {
+        let flags: CGEventFlags = fn ? [.maskSecondaryFn] : [.maskControl]
+        let down = try #require(replacement(dispatcher.process(try self.key(key, down: true, flags), type: .keyDown)))
+        _ = dispatcher.process(try self.key(key, down: false), type: .keyUp)
+        return Modifiers(flags: down.flags)
+    }
+
+    func finderDispatcher(changeCount: @escaping @MainActor () -> Int, controlKey: ControlKey = .control) -> Dispatcher {
+        let dispatcher = Dispatcher(frontmostBundleID: { "com.apple.finder" }, pasteboardChangeCount: changeCount)
+        dispatcher.rules = controlKey.apply(to: BuiltInRules.all)
+        return dispatcher
+    }
+
+    @Test func finderPastesCopiesUnlessCutCameLast() throws {
+        var changeCount = 10
+        let dispatcher = finderDispatcher { changeCount }
+
+        #expect(try finderPress(.v, on: dispatcher) == [.command], "Nothing cut yet: paste copies")
+
+        #expect(try finderPress(.x, on: dispatcher) == [.command])
+        changeCount += 1 // Finder copies the marked files
+        #expect(try finderPress(.v, on: dispatcher) == [.option, .command], "Cut last: move")
+        #expect(try finderPress(.v, on: dispatcher) == [.option, .command], "Still the cut files")
+
+        #expect(try finderPress(.c, on: dispatcher) == [.command])
+        changeCount += 1
+        #expect(try finderPress(.v, on: dispatcher) == [.command], "Copied since: paste copies")
+    }
+
+    @Test func finderMovesWhenPastedBeforeTheCutArrives() throws {
+        let dispatcher = finderDispatcher { 3 }
+        _ = try finderPress(.x, on: dispatcher)
+        #expect(try finderPress(.v, on: dispatcher) == [.option, .command])
+    }
+
+    @Test func finderCopyInAnotherAppEndsTheCut() throws {
+        var changeCount = 0
+        let dispatcher = finderDispatcher { changeCount }
+        _ = try finderPress(.x, on: dispatcher)
+        changeCount += 2 // the cut, then a copy elsewhere
+        #expect(try finderPress(.v, on: dispatcher) == [.command])
+    }
+
+    @Test func finderPasteFollowsTheCutWithFn() throws {
+        var changeCount = 0
+        let dispatcher = finderDispatcher(changeCount: { changeCount }, controlKey: .function)
+        #expect(try finderPress(.v, on: dispatcher, fn: true) == [.command])
+        _ = try finderPress(.x, on: dispatcher, fn: true)
+        changeCount += 1
+        #expect(try finderPress(.v, on: dispatcher, fn: true) == [.option, .command])
+    }
+
+    @Test func finderPasteKeepsItsModifiersWhileRepeating() throws {
+        let dispatcher = finderDispatcher { 0 }
+        _ = dispatcher.process(try key(.v, down: true, [.maskControl]), type: .keyDown)
+        let repeated = try #require(replacement(
+            dispatcher.process(try key(.v, down: true, [.maskControl], repeat: true), type: .keyDown)))
+        #expect(Modifiers(flags: repeated.flags) == [.command])
+        let up = try #require(replacement(dispatcher.process(try key(.v, down: false), type: .keyUp)))
+        #expect(Modifiers(flags: up.flags) == [.command])
+    }
 }
