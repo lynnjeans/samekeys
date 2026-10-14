@@ -108,7 +108,8 @@ enum BuiltInRules {
             inFinder("finder.rename", KeyCombo(.f2), KeyCombo(.returnKey)),
             inFinder("finder.open", KeyCombo(.returnKey), KeyCombo([.command], .downArrow)),
             // Ctrl+X marks for moving: Finder has no cut, but ⌘C followed by
-            // ⌥⌘V moves the files.
+            // ⌥⌘V moves the files. Ctrl+V pastes copies (⌘V) instead unless
+            // Ctrl+X was the last copy (the Dispatcher's finderPaste, SK-301).
             inFinder("finder.cut", KeyCombo([.control], .x), KeyCombo([.command], .c)),
             inFinder("finder.move", KeyCombo([.control], .v), KeyCombo([.option, .command], .v)),
             inFinder("finder.parent", KeyCombo(.delete), KeyCombo([.command], .upArrow)),

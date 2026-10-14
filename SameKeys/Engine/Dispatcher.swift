@@ -104,6 +104,12 @@ final class Dispatcher {
     /// Selects the other input source. Injected so tests leave this Mac's
     /// input source alone.
     private let switchInputSource: @MainActor () -> Void
+    /// The general pasteboard's change count, which tells whether Finder's
+    /// files were last cut or copied (SK-301). Injected so tests need no
+    /// pasteboard.
+    private let pasteboardChangeCount: @MainActor () -> Int
+    /// The change count when Ctrl+X last marked files to move in Finder.
+    private var cutChangeCount: Int?
 
     init(
         frontmostBundleID: @escaping @MainActor () -> String?,
@@ -117,6 +123,7 @@ final class Dispatcher {
         isClipboardHistoryOn: @escaping @MainActor () -> Bool = { false },
         toggleClipboardHistory: @escaping @MainActor () -> Void = {},
         switchInputSource: @escaping @MainActor () -> Void = {},
+        pasteboardChangeCount: @escaping @MainActor () -> Int = { NSPasteboard.general.changeCount },
         now: @escaping @MainActor () -> UInt64 = { DispatchTime.now().uptimeNanoseconds },
         isSecureInputOn: @escaping @MainActor () -> Bool = { IsSecureEventInputEnabled() },
         keyboard: @escaping @MainActor (CGEvent) -> Keyboard? = { _ in nil }
@@ -131,6 +138,7 @@ final class Dispatcher {
         self.isClipboardHistoryOn = isClipboardHistoryOn
         self.toggleClipboardHistory = toggleClipboardHistory
         self.switchInputSource = switchInputSource
+        self.pasteboardChangeCount = pasteboardChangeCount
         self.post = post
         self.openApplication = openApplication
         self.systemShortcuts = systemShortcuts
@@ -425,6 +433,7 @@ final class Dispatcher {
 
         switch rule.action {
         case .key(let combo):
+            let combo = finderPaste(combo, for: rule)
             heldKeys[key] = HeldKey(ruleID: rule.id, output: combo)
             return replacement(combo, down: true, for: event)
         case .openApplication(let bundleID):
@@ -448,6 +457,26 @@ final class Dispatcher {
             showClipboardHistory()
             return .consume
         }
+    }
+
+    /// Ctrl+V in Finder moves files only when Ctrl+X marked them: its ⌘C
+    /// is then the last pasteboard change, or still on its way. After
+    /// anything else, Ctrl+X included, it pastes copies, as File Explorer
+    /// does, and a copy in the same folder becomes a duplicate (SK-301).
+    private func finderPaste(_ combo: KeyCombo, for rule: Rule) -> KeyCombo {
+        let id = rule.id.hasSuffix(".fn") ? String(rule.id.dropLast(3)) : rule.id
+        switch id {
+        case "finder.cut":
+            cutChangeCount = pasteboardChangeCount()
+        case "finder.move":
+            if let cut = cutChangeCount, pasteboardChangeCount() - cut <= 1 { return combo }
+            var paste = combo
+            paste.modifiers.remove(.option)
+            return paste
+        default:
+            break
+        }
+        return combo
     }
 
     private func keyUp(_ event: CGEvent) -> Disposition {
