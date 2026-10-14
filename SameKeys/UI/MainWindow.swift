@@ -755,7 +755,7 @@ enum RuleNames {
         "finder.trash": String(localized: "Move to Trash"), "finder.trashCtrlD": String(localized: "Move to Trash"), "finder.rename": String(localized: "Rename"), "finder.open": String(localized: "Open"),
         "dialog.finderFolder": String(localized: "Go to Finder's folder"),
         "dialog.recentLocations": String(localized: "Recent and favorite folders"),
-        "finder.cut": String(localized: "Cut (mark to move)"), "finder.move": String(localized: "Move here"), "finder.parent": String(localized: "Enclosing folder"),
+        "finder.cut": String(localized: "Cut (mark to move)"), "finder.move": String(localized: "Paste (moves after Cut)"), "finder.parent": String(localized: "Enclosing folder"),
         "win.switchApp": String(localized: "Switch apps"), "win.quit": String(localized: "Quit app"), "win.screenshot": String(localized: "Screenshot to clipboard"),
         "win.taskManager": String(localized: "Task Manager (Activity Monitor)"),
         "browser.newTab": String(localized: "New tab"), "browser.closeTab": String(localized: "Close tab"), "browser.reopenTab": String(localized: "Reopen closed tab"),
