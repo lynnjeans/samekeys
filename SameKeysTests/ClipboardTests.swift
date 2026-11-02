@@ -74,43 +74,43 @@ import Testing
         pasteboard.writeObjects([item])
     }
 
-    @Test func offByDefaultAndRecordsNothing() {
+    @Test func offByDefaultAndRecordsNothing() async {
         let clipboard = ClipboardController(pasteboard: pasteboard, defaults: defaults, store: store)
         #expect(!clipboard.isEnabled)
         copy("hello")
-        clipboard.checkNow()
+        await clipboard.checkNow()
         #expect(clipboard.history.items.isEmpty)
 
         clipboard.isEnabled = true
-        clipboard.checkNow()
+        await clipboard.checkNow()
         #expect(clipboard.history.items.isEmpty, "Only copies made while it is on")
     }
 
-    @Test func textIsCapturedAndConcealedIsNot() {
+    @Test func textIsCapturedAndConcealedIsNot() async {
         let clipboard = ClipboardController(pasteboard: pasteboard, defaults: defaults, store: store)
         clipboard.isEnabled = true
         copy("hello")
-        clipboard.checkNow()
+        await clipboard.checkNow()
         #expect(clipboard.history.items.first?.text == "hello")
 
         copy("secret", extra: ["org.nspasteboard.ConcealedType"])
-        clipboard.checkNow()
+        await clipboard.checkNow()
         #expect(!clipboard.history.items.contains { $0.text == "secret" })
     }
 
-    @Test func imagesAndFilesKeepTheirType() throws {
+    @Test func imagesAndFilesKeepTheirType() async throws {
         let clipboard = ClipboardController(pasteboard: pasteboard, defaults: defaults, store: store)
         clipboard.isEnabled = true
 
         pasteboard.clearContents()
         let image = NSImage(size: NSSize(width: 4, height: 4))
         pasteboard.writeObjects([image])
-        clipboard.checkNow()
+        await clipboard.checkNow()
         #expect(clipboard.history.items.first?.kind == .image)
 
         pasteboard.clearContents()
         pasteboard.writeObjects([URL(fileURLWithPath: "/tmp/report.pdf") as NSURL])
-        clipboard.checkNow()
+        await clipboard.checkNow()
         #expect(clipboard.history.items.first?.kind == .file)
         #expect(clipboard.history.items.first?.fileURL?.lastPathComponent == "report.pdf")
     }
