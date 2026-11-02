@@ -128,8 +128,8 @@ final class ClipboardController {
     }
 
     /// Checks the pasteboard now rather than at the next poll; for tests.
-    func checkNow() {
-        monitor.check()
+    func checkNow() async {
+        await monitor.check()?.value
     }
 
     private func setExcludedApps(_ apps: [String]) {
