@@ -1,12 +1,13 @@
 // SameKeys website. Everything here is an enhancement: without it the page
-// still reads, and the download button still leads to the Releases page.
+// still reads, and the download buttons still lead to the Releases page.
 
-// The download button: straight to the latest release's disk image, with its
-// version, once there is one; until then, a note that none exists yet.
+// The download buttons, at the top and in the Download section: straight to
+// the latest release's disk image (SK-304), with its version under the lower
+// one, once there is a release; until then, a note that none exists yet.
 (async () => {
-  const button = document.querySelector("[data-download]");
+  const buttons = document.querySelectorAll("[data-download]");
   const status = document.querySelector("[data-release-status]");
-  if (!button || !status) return;
+  if (!buttons.length || !status) return;
   try {
     const response = await fetch("https://api.github.com/repos/lynnjeans/samekeys/releases/latest", {
       headers: { Accept: "application/vnd.github+json" },
@@ -19,7 +20,7 @@
     const release = await response.json();
     const dmg = (release.assets || []).find((asset) => asset.name.endsWith(".dmg"));
     if (!dmg) return;
-    button.href = dmg.browser_download_url;
+    buttons.forEach((button) => { button.href = dmg.browser_download_url; });
     const version = release.tag_name.replace(/^v/, "");
     status.textContent = status.dataset.version.replace("{version}", version);
   } catch {
