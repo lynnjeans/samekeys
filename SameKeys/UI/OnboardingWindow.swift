@@ -71,20 +71,21 @@ struct OnboardingWindow: View {
                     ))
                     .toggleStyle(.checkbox)
                 }
+                // The globe alone: the checkbox and the button already
+                // fill the row in French and Portuguese.
+                GuideLanguagePicker(iconOnly: true)
                 Spacer()
                 Button("Start Using SameKeys") {
                     onboarding.finish()
                     dismiss()
                 }
                 .keyboardShortcut(.defaultAction)
+                .fixedSize()
             } else {
                 // Closing without granting leaves the guide unfinished, so it
                 // returns on the next launch. Until then the Overview and the
                 // menu bar still say what is missing and lead back here.
                 Button("Set Up Later") { dismiss() }
-                // On the permission steps only: those are the ones with
-                // instructions to read, and the guide reopens on them after
-                // the restart a new language needs (SK-303).
                 GuideLanguagePicker()
                 Spacer()
                 Button("Open System Settings") { onboarding.openSettings() }
@@ -95,10 +96,11 @@ struct OnboardingWindow: View {
 }
 
 /// The language menu in the guide's footer, for someone who cannot read the
-/// language their Mac is set to. Unlike the sidebar's, it restarts at once:
-/// the guide is all there is to see yet, and it comes back in the new
-/// language where it left off.
+/// language their Mac is set to (SK-303). Unlike the sidebar's, it restarts
+/// at once: the guide is all there is to see yet, and it comes back in the
+/// new language where it left off.
 private struct GuideLanguagePicker: View {
+    var iconOnly = false
     private let current = AppLanguage.current
 
     var body: some View {
@@ -110,11 +112,15 @@ private struct GuideLanguagePicker: View {
                 Toggle(language.name, isOn: Binding(get: { language == current }, set: { _ in
                     guard language != current else { return }
                     language.apply()
-                    Relaunch.now()
+                    Relaunch.now(reopeningGuide: true)
                 }))
             }
         } label: {
-            Label(current.name, systemImage: "globe")
+            if iconOnly {
+                Image(systemName: "globe")
+            } else {
+                Label(current.name, systemImage: "globe")
+            }
         }
         .menuStyle(.borderlessButton)
         .fixedSize()
@@ -269,3 +275,4 @@ private extension OnboardingController.Step {
         }
     }
 }
+

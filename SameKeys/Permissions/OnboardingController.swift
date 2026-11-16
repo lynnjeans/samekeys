@@ -73,6 +73,11 @@ final class OnboardingController {
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let openURL: @MainActor (URL) -> Void
     @ObservationIgnored private let presentGuide: @MainActor () -> Void
+    @ObservationIgnored private let launchArguments: [String]
+
+    /// The launch argument that asks for the guide, given by a restart from
+    /// the guide itself (SK-303).
+    static let reopenArgument = "--reopen-guide"
 
     init(
         permissions: PermissionMonitor,
@@ -82,7 +87,8 @@ final class OnboardingController {
         openURL: @escaping @MainActor (URL) -> Void = { NSWorkspace.shared.open($0) },
         presentGuide: @escaping @MainActor () -> Void = {
             NotificationCenter.default.post(name: .openOnboarding, object: nil)
-        }
+        },
+        launchArguments: [String] = ProcessInfo.processInfo.arguments
     ) {
         self.permissions = permissions
         self.loginItem = loginItem
@@ -91,6 +97,7 @@ final class OnboardingController {
         self.defaults = defaults
         self.openURL = openURL
         self.presentGuide = presentGuide
+        self.launchArguments = launchArguments
     }
 
     /// Whether the guide should come up at launch: a first run that still
@@ -109,6 +116,16 @@ final class OnboardingController {
     func shouldOpenAtLaunch() -> Bool {
         guard !hasConsideredLaunch else { return false }
         hasConsideredLaunch = true
+        // Restarted from the guide for another language: back to where the
+        // user was, whatever the permissions say (SK-303).
+        if launchArguments.contains(Self.reopenArgument) {
+            Logger.permissions.notice("Restarted from the guide: opening it again")
+            if hasCompleted {
+                loginItem.refresh()
+                opensAtLogin = loginItem.isEnabled
+            }
+            return true
+        }
         if hasCompleted {
             guard Step.allCases.compactMap(\.permission).allSatisfy({ permissions.status(of: $0) != .granted })
             else { return false }

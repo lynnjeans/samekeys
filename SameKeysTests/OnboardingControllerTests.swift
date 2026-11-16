@@ -26,7 +26,7 @@ import Testing
         fake.inputMonitoring = kIOHIDAccessTypeGranted
     }
 
-    func makeController(inApplications: Bool = true) -> (OnboardingController, PermissionMonitor) {
+    func makeController(inApplications: Bool = true, launchArguments: [String] = []) -> (OnboardingController, PermissionMonitor) {
         let monitor = PermissionMonitor(service: fake.service)
         let controller = OnboardingController(
             permissions: monitor,
@@ -34,7 +34,8 @@ import Testing
             service: fake.service,
             defaults: defaults,
             openURL: { [record] in record.urls.append($0) },
-            presentGuide: { [record] in record.presentations += 1 }
+            presentGuide: { [record] in record.presentations += 1 },
+            launchArguments: launchArguments
         )
         return (controller, monitor)
     }
@@ -136,6 +137,24 @@ import Testing
         fake.accessibility = true
         let (second, _) = makeController()
         #expect(!second.shouldOpenAtLaunch(), "Input Monitoring may have been turned off on purpose")
+    }
+
+    /// SK-303: a language picked in the guide restarts SameKeys, and the
+    /// guide comes back even where a plain launch would leave it closed.
+    @Test func comesBackAfterARestartFromTheGuide() {
+        grantAll()
+        defaults.set(true, forKey: OnboardingController.completedKey)
+        let (controller, _) = makeController(launchArguments: ["SameKeys", OnboardingController.reopenArgument])
+        #expect(controller.shouldOpenAtLaunch())
+        #expect(controller.step == .ready)
+        #expect(!controller.shouldOpenAtLaunch(), "Still once per run")
+    }
+
+    @Test func aFirstRunRestartedOnTheClosingStepIsNotMarkedDone() {
+        grantAll()
+        let (controller, _) = makeController(launchArguments: [OnboardingController.reopenArgument])
+        #expect(controller.shouldOpenAtLaunch())
+        #expect(!controller.hasCompleted)
     }
 
     /// SK-269: a new signature or a reset leaves SameKeys with nothing, and
