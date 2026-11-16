@@ -82,11 +82,43 @@ struct OnboardingWindow: View {
                 // returns on the next launch. Until then the Overview and the
                 // menu bar still say what is missing and lead back here.
                 Button("Set Up Later") { dismiss() }
+                // On the permission steps only: those are the ones with
+                // instructions to read, and the guide reopens on them after
+                // the restart a new language needs (SK-303).
+                GuideLanguagePicker()
                 Spacer()
                 Button("Open System Settings") { onboarding.openSettings() }
                     .keyboardShortcut(.defaultAction)
             }
         }
+    }
+}
+
+/// The language menu in the guide's footer, for someone who cannot read the
+/// language their Mac is set to. Unlike the sidebar's, it restarts at once:
+/// the guide is all there is to see yet, and it comes back in the new
+/// language where it left off.
+private struct GuideLanguagePicker: View {
+    private let current = AppLanguage.current
+
+    var body: some View {
+        // A menu rather than a picker, so it is as wide as the current
+        // language's name and not the longest one's: the footer is narrow in
+        // German already.
+        Menu {
+            ForEach(AppLanguage.allCases) { language in
+                Toggle(language.name, isOn: Binding(get: { language == current }, set: { _ in
+                    guard language != current else { return }
+                    language.apply()
+                    Relaunch.now()
+                }))
+            }
+        } label: {
+            Label(current.name, systemImage: "globe")
+        }
+        .menuStyle(.borderlessButton)
+        .fixedSize()
+        .accessibilityLabel("Language")
     }
 }
 
