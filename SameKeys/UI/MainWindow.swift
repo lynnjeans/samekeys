@@ -210,17 +210,7 @@ private struct ShortcutsPage: View {
             .sheet(item: $editing) { rule in
                 RuleEditor(rules: rules, rule: rule)
             }
-            .alert("Turn on Windows key shortcuts?", isPresented: $confirmingWinKey) {
-                Button("Turn On") { rules.setGroup("winKey", enabled: true) }
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                switch rules.modifierLayout {
-                case .pcKeyboard:
-                    Text("Win is ⌘, so these shortcuts take ⌘Tab, ⌘Space, ⌘L, ⌘E, ⌘D, ⌘. and ⌘⇧S, and tapping ⌘ on its own opens Apps. ⌘Tab then opens Mission Control; switch apps with ⌥Tab. While the clipboard history is on, ⌘V opens it instead of pasting.")
-                case .macPosition:
-                    Text("Win is ⌥, so these shortcuts take ⌥Tab, ⌥Space, ⌥L, ⌥E, ⌥D, ⌥. and ⌥⇧S, and tapping ⌥ on its own opens Apps. ⌥ and a letter types characters on a Mac (é, ¬, ∂; @ on some layouts).")
-                }
-            }
+            .winKeyConfirmation(isPresented: $confirmingWinKey, rules: rules)
 
         if !search.isEmpty && Self.groups(of: rules.preset).allSatisfy({ Self.matching(rules.rules(inGroup: $0.id), search, rules.controlKey, rules.modifierLayout).isEmpty }) {
             ContentUnavailableView.search(text: search)
@@ -1027,5 +1017,23 @@ struct Card<Content: View>: View {
             .padding(18)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+extension View {
+    /// Asks before the Windows key shortcuts go on, saying which Mac shortcuts
+    /// they take over: on the Shortcuts page and in the setup guide.
+    func winKeyConfirmation(isPresented: Binding<Bool>, rules: RulesController) -> some View {
+        alert("Turn on Windows key shortcuts?", isPresented: isPresented) {
+            Button("Turn On") { rules.setGroup("winKey", enabled: true) }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            switch rules.modifierLayout {
+            case .pcKeyboard:
+                Text("Win is ⌘, so these shortcuts take ⌘Tab, ⌘Space, ⌘L, ⌘E, ⌘D, ⌘. and ⌘⇧S, and tapping ⌘ on its own opens Apps. ⌘Tab then opens Mission Control; switch apps with ⌥Tab. While the clipboard history is on, ⌘V opens it instead of pasting.")
+            case .macPosition:
+                Text("Win is ⌥, so these shortcuts take ⌥Tab, ⌥Space, ⌥L, ⌥E, ⌥D, ⌥. and ⌥⇧S, and tapping ⌥ on its own opens Apps. ⌥ and a letter types characters on a Mac (é, ¬, ∂; @ on some layouts).")
+            }
+        }
     }
 }

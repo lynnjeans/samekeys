@@ -2577,64 +2577,6 @@
         }
       }
     },
-    "Both permissions are granted, so SameKeys can be switched on. Your habits should work now:" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beide Berechtigungen sind erteilt, SameKeys kann also eingeschaltet werden. Deine Gewohnheiten sollten jetzt funktionieren:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los dos permisos están concedidos, así que puedes activar SameKeys. Tus costumbres ya deberían funcionar:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les deux autorisations sont accordées, SameKeys peut donc être activé. Vos habitudes devraient fonctionner maintenant :"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "両方の権限が許可されたので、SameKeys を有効にできます。いつもの操作がもう使えるはずです："
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "두 권한이 모두 허용되어 SameKeys를 켤 수 있습니다. 이제 익숙한 습관이 작동할 것입니다:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oba uprawnienia są przyznane, więc SameKeys można włączyć. Twoje nawyki powinny już działać:"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As duas permissões foram concedidas, então o SameKeys pode ser ativado. Seus hábitos já devem funcionar:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "两项权限都已授权，可以启用 SameKeys 了。你的习惯现在应该都能用了："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "兩項權限都已允許，可以啟用 SameKeys 了。你的習慣現在應該都能用了："
-          }
-        }
-      }
-    },
     "Both permissions are granted." : {
       "localizations" : {
         "de" : {
@@ -4840,60 +4782,60 @@
         }
       }
     },
-    "Ctrl+C and Ctrl+V copy and paste." : {
+    "Ctrl+C and Ctrl+V, Home and End, the mouse side buttons and zooming with the wheel work now. These start off; turn on the ones you want:" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strg+C und Strg+V kopieren und fügen ein."
+            "value" : "Strg+C und Strg+V, Pos1 und Ende, die Maus-Seitentasten und Zoomen mit dem Rad funktionieren jetzt. Diese sind zunächst aus; schalte ein, was du möchtest:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C y Ctrl+V copian y pegan."
+            "value" : "Ctrl+C y Ctrl+V, Inicio y Fin, los botones laterales del ratón y el zoom con la rueda ya funcionan. Estos empiezan desactivados; activa los que quieras:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C et Ctrl+V copient et collent."
+            "value" : "Ctrl+C et Ctrl+V, Début et Fin, les boutons latéraux de la souris et le zoom à la molette fonctionnent déjà. Ceux-ci sont désactivés au départ ; activez ceux que vous voulez :"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C と Ctrl+V でコピーとペースト。"
+            "value" : "Ctrl+C と Ctrl+V、Home と End、マウスのサイドボタン、ホイールでのズームはもう使えます。次の機能は最初はオフです。使うものをオンにしてください："
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C와 Ctrl+V로 복사하고 붙여넣습니다."
+            "value" : "Ctrl+C와 Ctrl+V, Home과 End, 마우스 측면 버튼, 휠 확대/축소가 이제 작동합니다. 아래 기능은 처음에 꺼져 있으니 원하는 것을 켜세요:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C i Ctrl+V kopiują i wklejają."
+            "value" : "Ctrl+C i Ctrl+V, Home i End, boczne przyciski myszy i powiększanie kółkiem już działają. Te są na początku wyłączone; włącz te, których chcesz:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C e Ctrl+V copiam e colam."
+            "value" : "Ctrl+C e Ctrl+V, Home e End, os botões laterais do mouse e o zoom com a roda já funcionam. Estes começam desligados; ligue os que quiser:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C 和 Ctrl+V 可以复制、粘贴。"
+            "value" : "Ctrl+C 和 Ctrl+V、Home 和 End、鼠标侧键和滚轮缩放现在都能用了。下面这些默认关闭，需要的话打开："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ctrl+C 和 Ctrl+V 可以拷貝、貼上。"
+            "value" : "Ctrl+C 和 Ctrl+V、Home 和 End、滑鼠側鍵和滾輪縮放現在都能用了。下面這些預設關閉，需要的話打開："
           }
         }
       }
@@ -9712,64 +9654,6 @@
         }
       }
     },
-    "Home and End jump to the start and end of the line." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pos1 und Ende springen an Zeilenanfang und -ende."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inicio y Fin saltan al principio y al final de la línea."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Début et Fin vont au début et à la fin de la ligne."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home と End で行頭・行末へ移動。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home과 End로 줄의 시작과 끝으로 이동합니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home i End przechodzą na początek i koniec wiersza."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home e End vão para o início e o fim da linha."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home 和 End 跳到行首和行尾。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home 和 End 跳到行首和行尾。"
-          }
-        }
-      }
-    },
     "Home, End and Ctrl+arrow keys are left alone in terminals; fn shortcuts work there too." : {
       "localizations" : {
         "de" : {
@@ -13478,6 +13362,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新增 Word 文件"
+          }
+        }
+      }
+    },
+    "New documents and Open in Terminal on empty space in a folder." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechtsklick auf eine freie Stelle im Ordner: neue Dokumente und In Terminal öffnen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clic derecho en un espacio vacío de una carpeta: nuevos documentos y Abrir en Terminal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clic droit dans un espace vide d’un dossier : nouveaux documents et Ouvrir dans Terminal."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォルダの何もないところを右クリックして、新規書類やターミナルで開く。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폴더의 빈 곳을 오른쪽 클릭해 새 문서를 만들거나 터미널에서 엽니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prawy klik w pustym miejscu folderu: nowe dokumenty i Otwórz w Terminalu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clique com o botão direito num espaço vazio da pasta: novos documentos e Abrir no Terminal."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在文件夹空白处右键，新建文档或在终端中打开。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在檔案夾空白處按右鍵，新增文件或在終端機中打開。"
           }
         }
       }
@@ -24624,64 +24566,6 @@
         }
       }
     },
-    "The mouse side buttons go back and forward." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Maus-Seitentasten gehen zurück und vorwärts."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los botones laterales del ratón van atrás y adelante."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les boutons latéraux de la souris font précédent et suivant."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "マウスのサイドボタンで戻る・進む。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "마우스 사이드 버튼으로 뒤로, 앞으로 이동합니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boczne przyciski myszy przechodzą wstecz i dalej."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os botões laterais do mouse voltam e avançam."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "鼠标侧键可以后退、前进。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "滑鼠側鍵可以上一頁、下一頁。"
-          }
-        }
-      }
-    },
     "The preset is as it ships" : {
       "localizations" : {
         "de" : {
@@ -25374,6 +25258,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打開"
+          }
+        }
+      }
+    },
+    "Turn On…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einschalten …"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オンにする…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "켜기…"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz…"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligar…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開啟⋯"
           }
         }
       }
@@ -27706,64 +27648,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "這個快速鍵不能包含 fn，請用 ⌘、⌥、⌃ 或 ⇧ 組合。"
-          }
-        }
-      }
-    },
-    "fn or Ctrl with the scroll wheel zooms the page." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn oder Strg mit dem Mausrad zoomt die Seite."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn o Ctrl con la rueda hace zoom en la página."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn ou Ctrl avec la molette zoome la page."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn または Ctrl を押しながらホイールを回すとページをズームできます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn 또는 Ctrl을 누른 채 휠을 돌리면 페이지가 확대/축소됩니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn lub Ctrl z kółkiem powiększa stronę."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fn ou Ctrl com a roda do mouse amplia a página."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按住 fn 或 Ctrl 滚动滚轮可以缩放页面。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按住 fn 或 Ctrl 捲動滾輪可以縮放頁面。"
           }
         }
       }

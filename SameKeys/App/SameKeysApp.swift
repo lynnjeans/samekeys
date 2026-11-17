@@ -58,7 +58,7 @@ struct SameKeysApp: App {
 
         // The first-run guide, sized by its content.
         Window("Set Up SameKeys", id: WindowID.onboarding) {
-            OnboardingWindow(onboarding: appDelegate.onboarding)
+            OnboardingWindow(onboarding: appDelegate.onboarding, rules: appDelegate.rules, clipboard: appDelegate.clipboard)
         }
         .windowResizability(.contentSize)
         .handlesExternalEvents(matching: [])

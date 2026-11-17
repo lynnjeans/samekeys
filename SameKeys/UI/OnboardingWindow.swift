@@ -1,3 +1,4 @@
+import FinderSync
 import SwiftUI
 
 /// The first-run guide: why each permission is needed, a button to the pane
@@ -8,6 +9,8 @@ import SwiftUI
 /// itself, usually before the user has switched back.
 struct OnboardingWindow: View {
     let onboarding: OnboardingController
+    let rules: RulesController
+    let clipboard: ClipboardController
     @Environment(\.dismiss) private var dismiss
 
     private var step: OnboardingController.Step {
@@ -57,7 +60,7 @@ struct OnboardingWindow: View {
         case .accessibility, .inputMonitoring:
             PermissionStep(step: step, onboarding: onboarding)
         case .ready:
-            ReadyStep()
+            ReadyStep(rules: rules, clipboard: clipboard)
         }
     }
 
@@ -221,26 +224,100 @@ private struct PermissionStep: View {
     }
 }
 
-/// The closing step, once both permissions are granted.
+/// The closing step, once both permissions are granted: what works already,
+/// then the features that start off, each with its switch (SK-305). After
+/// setup few people open the main window to look for them.
 private struct ReadyStep: View {
+    let rules: RulesController
+    let clipboard: ClipboardController
+    @State private var confirmingWinKey = false
+    @State private var finderMenuIsOn = FIFinderSyncController.isExtensionEnabled
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             Label("SameKeys is ready", systemImage: "checkmark.circle.fill")
                 .foregroundStyle(.green)
                 .font(.title2.bold())
-            Text("Both permissions are granted, so SameKeys can be switched on. Your habits should work now:")
+            Text("Ctrl+C and Ctrl+V, Home and End, the mouse side buttons and zooming with the wheel work now. These start off; turn on the ones you want:")
                 .fixedSize(horizontal: false, vertical: true)
-            VStack(alignment: .leading, spacing: 8) {
-                Label("Ctrl+C and Ctrl+V copy and paste.", systemImage: "doc.on.doc")
-                Label("Home and End jump to the start and end of the line.", systemImage: "arrow.left.to.line")
-                Label("The mouse side buttons go back and forward.", systemImage: "computermouse")
-                Label("fn or Ctrl with the scroll wheel zooms the page.", systemImage: "plus.magnifyingglass")
+            VStack(spacing: 10) {
+                FeatureRow(symbol: "command", tint: .pink, title: RuleNames.name(ofGroup: "winKey"),
+                           note: RuleNames.note(ofGroup: "winKey", style: rules.modifierLayout.triggerStyle).map { Text($0) }) {
+                    Toggle(RuleNames.name(ofGroup: "winKey"), isOn: Binding(
+                        get: { rules.isEnabled(group: "winKey") },
+                        set: { isOn in
+                            if isOn { confirmingWinKey = true } else { rules.setGroup("winKey", enabled: false) }
+                        }
+                    ))
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+                }
+                FeatureRow(symbol: "arrow.up.arrow.down", tint: .teal, title: String(localized: "Windows scroll direction"),
+                           note: Text(WheelSettings.directionNote)) {
+                    Toggle("Windows scroll direction", isOn: Binding(
+                        get: { rules.wheelDirection == .windows },
+                        set: { rules.setWheelDirection($0 ? .windows : .system) }
+                    ))
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+                }
+                FeatureRow(symbol: "doc.on.clipboard.fill", tint: .purple, title: String(localized: "Clipboard history"),
+                           note: Text(clipboard.isEnabled
+                                      ? "Keeps what you copy — text, images and files — on this Mac only."
+                                      : "Off. Turn it on to keep what you copy, like Win+V on Windows.")) {
+                    Toggle("Clipboard history", isOn: Binding(
+                        get: { clipboard.isEnabled }, set: { clipboard.isEnabled = $0 }
+                    ))
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+                }
+                // macOS switches Finder extensions on only in System Settings.
+                FeatureRow(symbol: "contextualmenu.and.cursorarrow", tint: .blue, title: String(localized: "Finder right-click menu"),
+                           note: Text("New documents and Open in Terminal on empty space in a folder.")) {
+                    if finderMenuIsOn {
+                        Label("On", systemImage: "checkmark")
+                            .foregroundStyle(.green)
+                    } else {
+                        Button("Turn On…") { FIFinderSyncController.showExtensionManagementInterface() }
+                    }
+                }
             }
-            .font(.callout)
             Text("SameKeys lives in the menu bar. Open it from there whenever you want to change what a key does.")
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+                .padding(.top, 4)
+        }
+        .winKeyConfirmation(isPresented: $confirmingWinKey, rules: rules)
+        // Coming back from System Settings makes SameKeys active again.
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            finderMenuIsOn = FIFinderSyncController.isExtensionEnabled
+        }
+    }
+}
+
+/// One feature in the closing step: icon, name, one line, and its control.
+private struct FeatureRow<Control: View>: View {
+    let symbol: String
+    let tint: Color
+    let title: String
+    let note: Text?
+    @ViewBuilder let control: () -> Control
+
+    var body: some View {
+        HStack(spacing: 10) {
+            IconTile(symbol: symbol, tint: tint, size: 26)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(title)
+                    .font(.callout.weight(.semibold))
+                note?
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 8)
+            control()
+                .controlSize(.small)
         }
     }
 }

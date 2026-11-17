@@ -182,7 +182,7 @@ struct WheelSettings: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Windows scroll direction")
                         .font(.headline)
-                    Text(directionNote)
+                    Text(Self.directionNote)
                         .font(.callout)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -232,7 +232,8 @@ struct WheelSettings: View {
 
     /// macOS applies natural scrolling to the trackpad and every mouse at
     /// once. With it off, wheels already scroll the Windows way.
-    private var directionNote: LocalizedStringKey {
+    /// Also under the switch in the setup guide.
+    static var directionNote: LocalizedStringKey {
         let natural = UserDefaults.standard.object(forKey: "com.apple.swipescrolldirection") as? Bool ?? true
         return natural
             ? "Rolling the wheel towards you moves down the page. The trackpad and a Magic Mouse keep natural scrolling."
