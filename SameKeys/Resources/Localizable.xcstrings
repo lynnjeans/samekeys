@@ -2925,6 +2925,122 @@
         }
       }
     },
+    "By position" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Position"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por posición"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par position"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置どおり"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위치대로"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Według położenia"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por posição"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按位置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按位置"
+          }
+        }
+      }
+    },
+    "By position, as on a Windows keyboard" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Position, wie auf einer Windows-Tastatur"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por posición, como en un teclado de Windows"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par position, comme sur un clavier Windows"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置どおり（Windows キーボードと同じ）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위치대로 (Windows 키보드와 같게)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Według położenia, jak na klawiaturze Windows"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por posição, como num teclado Windows"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按位置（和 Windows 键盘一样）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按位置（和 Windows 鍵盤一樣）"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -8780,122 +8896,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "例如 Ctrl+C 拷貝。"
-          }
-        }
-      }
-    },
-    "For example, Win+L is ⌘L." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zum Beispiel ist Win+L ⌘L."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por ejemplo, Win+L es ⌘L."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Par exemple, Win+L est ⌘L."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例：Win+L は ⌘L。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "예를 들어 Win+L은 ⌘L입니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na przykład Win+L to ⌘L."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por exemplo, Win+L é ⌘L."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例如 Win+L 就是 ⌘L。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例如 Win+L 就是 ⌘L。"
-          }
-        }
-      }
-    },
-    "For example, Win+L is ⌥L." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zum Beispiel ist Win+L ⌥L."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por ejemplo, Win+L es ⌥L."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Par exemple, Win+L est ⌥L."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例：Win+L は ⌥L。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "예를 들어 Win+L은 ⌥L입니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na przykład Win+L to ⌥L."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por exemplo, Win+L é ⌥L."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例如 Win+L 就是 ⌥L。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例如 Win+L 就是 ⌥L。"
           }
         }
       }
@@ -14812,6 +14812,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開啟"
+          }
+        }
+      }
+    },
+    "On a Mac keyboard, the keys that press Win and Alt in Windows shortcuts." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit welchen Tasten einer Mac-Tastatur du Win und Alt in Windows-Kurzbefehlen drückst."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las teclas de un teclado Mac con las que pulsas Win y Alt en los atajos de Windows."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les touches d’un clavier Mac qui font Win et Alt dans les raccourcis Windows."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac キーボードで、Windows ショートカットの Win と Alt をどのキーで押すか。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac 키보드에서 Windows 단축키의 Win과 Alt를 어느 키로 누를지 정합니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Którymi klawiszami klawiatury Mac naciskasz Win i Alt w skrótach Windows."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As teclas de um teclado Mac que fazem Win e Alt nos atalhos do Windows."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 Mac 键盘上，Windows 快捷键里的 Win 和 Alt 用哪两个键按。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 Mac 鍵盤上，Windows 快捷鍵裡的 Win 和 Alt 用哪兩個鍵按。"
           }
         }
       }
@@ -24566,6 +24624,64 @@
         }
       }
     },
+    "The keys each keyboard presses Win and Alt with." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit welchen Tasten jede Tastatur Win und Alt drückt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las teclas con las que cada teclado pulsa Win y Alt."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les touches qui font Win et Alt sur chaque clavier."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーボードごとに、Win と Alt をどのキーで押すか。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키보드마다 Win과 Alt를 어느 키로 누를지 정합니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Którymi klawiszami każda klawiatura naciska Win i Alt."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As teclas que fazem Win e Alt em cada teclado."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每把键盘用哪个键按 Win 和 Alt。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每把鍵盤用哪個鍵按 Win 和 Alt。"
+          }
+        }
+      }
+    },
     "The preset is as it ships" : {
       "localizations" : {
         "de" : {
@@ -26022,64 +26138,6 @@
         }
       }
     },
-    "Which keys Win and Alt are on each keyboard." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auf welchen Tasten Win und Alt auf jeder Tastatur liegen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En qué teclas están Win y Alt en cada teclado."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sur quelles touches sont Win et Alt sur chaque clavier."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キーボードごとに、Win と Alt をどのキーに割り当てるかを選びます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "각 키보드에서 Win과 Alt가 어느 키인지 정합니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na których klawiszach są Win i Alt na każdej klawiaturze."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Em quais teclas ficam Win e Alt em cada teclado."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Win 和 Alt 在每把键盘上对应哪个键。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Win 和 Alt 在每個鍵盤上對應哪個鍵。"
-          }
-        }
-      }
-    },
     "Win and Alt keys" : {
       "localizations" : {
         "de" : {
@@ -26196,6 +26254,64 @@
         }
       }
     },
+    "Win is ⌘, Alt is ⌥. Win+L locks the screen with ⌘L." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win ist ⌘, Alt ist ⌥. Win+L sperrt den Bildschirm mit ⌘L."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win es ⌘, Alt es ⌥. Win+L bloquea la pantalla con ⌘L."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win est ⌘, Alt est ⌥. Win+L verrouille l’écran avec ⌘L."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win は ⌘、Alt は ⌥。画面ロックの Win+L は ⌘L。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win은 ⌘, Alt는 ⌥. 화면 잠금 Win+L은 ⌘L."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win to ⌘, Alt to ⌥. Win+L blokuje ekran przez ⌘L."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win é ⌘, Alt é ⌥. Win+L bloqueia a tela com ⌘L."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win 是 ⌘，Alt 是 ⌥。锁屏 Win+L：按 ⌘L。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win 是 ⌘，Alt 是 ⌥。鎖定螢幕 Win+L：按 ⌘L。"
+          }
+        }
+      }
+    },
     "Win is ⌘, so these shortcuts take ⌘Tab, ⌘Space, ⌘L, ⌘E, ⌘D, ⌘. and ⌘⇧S, and tapping ⌘ on its own opens Apps. ⌘Tab then opens Mission Control; switch apps with ⌥Tab. While the clipboard history is on, ⌘V opens it instead of pasting." : {
       "localizations" : {
         "de" : {
@@ -26250,6 +26366,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Win 對應為 ⌘，所以這些快速鍵會佔用 ⌘Tab、⌘空白鍵、⌘L、⌘E、⌘D、⌘. 和 ⌘⇧S，單按一下 ⌘ 會打開「App」。之後 ⌘Tab 打開指揮中心，切換 App 請用 ⌥Tab。剪貼簿歷史開啟時，⌘V 會打開它而不是貼上。"
+          }
+        }
+      }
+    },
+    "Win is ⌥, Alt is ⌘. Win+L locks the screen with ⌥L." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win ist ⌥, Alt ist ⌘. Win+L sperrt den Bildschirm mit ⌥L."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win es ⌥, Alt es ⌘. Win+L bloquea la pantalla con ⌥L."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win est ⌥, Alt est ⌘. Win+L verrouille l’écran avec ⌥L."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win は ⌥、Alt は ⌘。画面ロックの Win+L は ⌥L。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win은 ⌥, Alt는 ⌘. 화면 잠금 Win+L은 ⌥L."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win to ⌥, Alt to ⌘. Win+L blokuje ekran przez ⌥L."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win é ⌥, Alt é ⌘. Win+L bloqueia a tela com ⌥L."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win 是 ⌥，Alt 是 ⌘。锁屏 Win+L：按 ⌥L。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win 是 ⌥，Alt 是 ⌘。鎖定螢幕 Win+L：按 ⌥L。"
           }
         }
       }
@@ -26312,118 +26486,118 @@
         }
       }
     },
-    "Win maps to ⌘ and Alt to ⌥. For example, Win+L is ⌘L." : {
+    "Win+L locks the screen: press ⌘L." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win wird zu ⌘ und Alt zu ⌥. Zum Beispiel ist Win+L ⌘L."
+            "value" : "Win+L sperrt den Bildschirm: ⌘L drücken."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win pasa a ⌘ y Alt a ⌥. Por ejemplo, Win+L es ⌘L."
+            "value" : "Win+L bloquea la pantalla: pulsa ⌘L."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win devient ⌘ et Alt ⌥. Par exemple, Win+L est ⌘L."
+            "value" : "Win+L verrouille l’écran : appuyez sur ⌘L."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win は ⌘、Alt は ⌥ に割り当てます。例：Win+L は ⌘L。"
+            "value" : "画面ロックの Win+L：⌘L を押す"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win은 ⌘, Alt는 ⌥에 대응합니다. 예를 들어 Win+L은 ⌘L입니다."
+            "value" : "화면 잠금 Win+L: ⌘L을 누릅니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win to ⌘, a Alt to ⌥. Na przykład Win+L to ⌘L."
+            "value" : "Win+L blokuje ekran: naciśnij ⌘L."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win vira ⌘ e Alt vira ⌥. Por exemplo, Win+L é ⌘L."
+            "value" : "Win+L bloqueia a tela: pressione ⌘L."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win 映射为 ⌘，Alt 映射为 ⌥。例如 Win+L 就是 ⌘L。"
+            "value" : "锁屏 Win+L：按 ⌘L"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win 對應為 ⌘，Alt 對應為 ⌥。例如 Win+L 就是 ⌘L。"
+            "value" : "鎖定螢幕 Win+L：按 ⌘L"
           }
         }
       }
     },
-    "Win maps to ⌥ and Alt to ⌘. For example, Win+L is ⌥L." : {
+    "Win+L locks the screen: press ⌥L." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win wird zu ⌥ und Alt zu ⌘. Zum Beispiel ist Win+L ⌥L."
+            "value" : "Win+L sperrt den Bildschirm: ⌥L drücken."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win pasa a ⌥ y Alt a ⌘. Por ejemplo, Win+L es ⌥L."
+            "value" : "Win+L bloquea la pantalla: pulsa ⌥L."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win devient ⌥ et Alt ⌘. Par exemple, Win+L est ⌥L."
+            "value" : "Win+L verrouille l’écran : appuyez sur ⌥L."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win は ⌥、Alt は ⌘ に割り当てます。例：Win+L は ⌥L。"
+            "value" : "画面ロックの Win+L：⌥L を押す"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win은 ⌥, Alt는 ⌘에 대응합니다. 예를 들어 Win+L은 ⌥L입니다."
+            "value" : "화면 잠금 Win+L: ⌥L을 누릅니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win to ⌥, a Alt to ⌘. Na przykład Win+L to ⌥L."
+            "value" : "Win+L blokuje ekran: naciśnij ⌥L."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win vira ⌥ e Alt vira ⌘. Por exemplo, Win+L é ⌥L."
+            "value" : "Win+L bloqueia a tela: pressione ⌥L."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win 映射为 ⌥，Alt 映射为 ⌘。例如 Win+L 就是 ⌥L。"
+            "value" : "锁屏 Win+L：按 ⌥L"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win 對應為 ⌥，Alt 對應為 ⌘。例如 Win+L 就是 ⌥L。"
+            "value" : "鎖定螢幕 Win+L：按 ⌥L"
           }
         }
       }
@@ -28324,6 +28498,122 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "⌘ Command"
+          }
+        }
+      }
+    },
+    "⌘ as Win" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ als Win"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ como Win"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ comme Win"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ を Win に"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘을 Win으로"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ jako Win"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ como Win"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ 当 Win"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ 當 Win"
+          }
+        }
+      }
+    },
+    "⌘ as Win, the Mac's own system key" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ als Win, die Systemtaste des Mac"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ como Win, la tecla de sistema del Mac"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ comme Win, la touche système du Mac"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ を Win に（Mac 本来のシステムキー）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘을 Win으로 (Mac 고유의 시스템 키)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ jako Win, systemowy klawisz Maca"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ como Win, a tecla de sistema do Mac"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ 当 Win（Mac 自己的系统键）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘ 當 Win（Mac 自己的系統鍵）"
           }
         }
       }

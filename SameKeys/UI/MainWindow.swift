@@ -403,7 +403,7 @@ private struct WinAltCard: View {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 14) {
                         icon
-                        heading(Text("Which keys Win and Alt are on each keyboard."))
+                        heading(Text("The keys each keyboard presses Win and Alt with."))
                     }
                     ForEach(keyboards.entries) { entry in
                         Divider()
@@ -427,15 +427,19 @@ private struct WinAltCard: View {
                     }
                 }
             } else {
-                HStack(spacing: 14) {
-                    icon
-                    AdaptiveRow {
-                        heading(Text(description))
-                        Picker("Win and Alt keys", selection: $choice) { macOptions }
-                            .pickerStyle(.segmented)
-                            .labelsHidden()
-                            .fixedSize()
+                // Only Mac keyboards: the two choices drawn as that keyboard's
+                // bottom row, with Win and Alt on the keys they would be
+                // (SK-306). "Win → ⌥ · Alt → ⌘" left people working it out.
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(spacing: 14) {
+                        icon
+                        heading(Text("On a Mac keyboard, the keys that press Win and Alt in Windows shortcuts."))
                     }
+                    ViewThatFits(in: .horizontal) {
+                        HStack(alignment: .top, spacing: 10) { layoutOptions }
+                        VStack(spacing: 10) { layoutOptions }
+                    }
+                    .padding(.leading, 48)
                 }
             }
         }
@@ -467,30 +471,100 @@ private struct WinAltCard: View {
         }
     }
 
-    // Both keys named in each option, and no keyboard: which keyboard
-    // someone has says less than where they reach for Win. The same in
-    // every language.
-    @ViewBuilder private var macOptions: some View {
-        Text(verbatim: "Win → ⌥ · Alt → ⌘").tag(ModifierLayout.macPosition)
-        Text(verbatim: "Win → ⌘ · Alt → ⌥").tag(ModifierLayout.pcKeyboard)
+    @ViewBuilder private var layoutOptions: some View {
+        ForEach([ModifierLayout.macPosition, .pcKeyboard], id: \.self) { layout in
+            WinAltOption(layout: layout, isSelected: choice == layout) { choice = layout }
+        }
     }
 
-    private var description: LocalizedStringKey {
-        switch choice {
-        case .pcKeyboard:
-            "Win maps to ⌘ and Alt to ⌥. For example, Win+L is ⌘L."
-        case .macPosition:
-            "Win maps to ⌥ and Alt to ⌘. For example, Win+L is ⌥L."
-        }
+    // In a keyboard's row, the same two choices in a few words. Which
+    // keyboard someone has says less than where they reach for Win.
+    @ViewBuilder private var macOptions: some View {
+        Text("By position").tag(ModifierLayout.macPosition)
+        Text("⌘ as Win").tag(ModifierLayout.pcKeyboard)
     }
 
     /// In the keys printed on that keyboard.
     static func example(_ layout: ModifierLayout, on keyboard: Keyboard) -> Text {
         switch (layout, keyboard.hasMacKeys) {
-        case (.pcKeyboard, true): Text("For example, Win+L is ⌘L.")
-        case (.macPosition, true): Text("For example, Win+L is ⌥L.")
+        case (.pcKeyboard, true): Text("Win is ⌘, Alt is ⌥. Win+L locks the screen with ⌘L.")
+        case (.macPosition, true): Text("Win is ⌥, Alt is ⌘. Win+L locks the screen with ⌥L.")
         case (.pcKeyboard, false): Text("For example, Win+L: press the Win key and L.")
         case (.macPosition, false): Text("For example, Win+L: press the Alt key and L.")
+        }
+    }
+}
+
+/// One choice of the Win and Alt card: its name, the bottom row of a Mac
+/// keyboard with Win and Alt marked on their keys, and what Win+L becomes.
+private struct WinAltOption: View {
+    let layout: ModifierLayout
+    let isSelected: Bool
+    let select: () -> Void
+
+    var body: some View {
+        Button(action: select) {
+            VStack(alignment: .leading, spacing: 10) {
+                Label {
+                    Text(title)
+                        .font(.callout.weight(.semibold))
+                        .fixedSize(horizontal: false, vertical: true)
+                } icon: {
+                    Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
+                        .foregroundStyle(isSelected ? Color.accentColor : .secondary)
+                }
+                HStack(alignment: .top, spacing: 4) {
+                    key("fn")
+                    key("⌃")
+                    key("⌥", marked: layout == .macPosition ? "Win" : "Alt")
+                    key("⌘", marked: layout == .macPosition ? "Alt" : "Win")
+                    key("", width: 56)
+                }
+                .accessibilityHidden(true)
+                Text(example)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(.background, in: shape)
+            .overlay(shape.stroke(isSelected ? Color.accentColor : Color(nsColor: .separatorColor), lineWidth: isSelected ? 2 : 1))
+            .contentShape(shape)
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: 10, style: .continuous) }
+
+    private var title: LocalizedStringKey {
+        switch layout {
+        case .macPosition: "By position, as on a Windows keyboard"
+        case .pcKeyboard: "⌘ as Win, the Mac's own system key"
+        }
+    }
+
+    private var example: LocalizedStringKey {
+        switch layout {
+        case .macPosition: "Win+L locks the screen: press ⌥L."
+        case .pcKeyboard: "Win+L locks the screen: press ⌘L."
+        }
+    }
+
+    /// A key of the row; Win and Alt are written under the keys they are on.
+    private func key(_ name: String, marked: String? = nil, width: CGFloat? = nil) -> some View {
+        VStack(spacing: 3) {
+            Keycap(text: name, isModifier: marked == nil)
+                .frame(width: width)
+                .overlay {
+                    if marked != nil {
+                        RoundedRectangle(cornerRadius: 6, style: .continuous).stroke(Color.accentColor, lineWidth: 1.5)
+                    }
+                }
+            Text(verbatim: marked ?? " ")
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(marked == "Win" ? Color.accentColor : .secondary)
         }
     }
 }
