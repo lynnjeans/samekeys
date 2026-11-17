@@ -51,7 +51,7 @@ final class ClipboardMonitor {
         guard timer == nil else { return }
         lastChangeCount = pasteboard.changeCount
         let timer = Timer(timeInterval: 0.5, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated { self?.check() }
+            MainActor.assumeIsolated { _ = self?.check() }
         }
         timer.tolerance = 0.2
         RunLoop.main.add(timer, forMode: .common)
