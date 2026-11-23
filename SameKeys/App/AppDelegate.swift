@@ -6,6 +6,7 @@ import OSLog
 final class AppDelegate: NSObject, NSApplicationDelegate {
     let permissionMonitor = PermissionMonitor()
     let secureInput = SecureInputMonitor()
+    lazy var secureInputBubble = SecureInputBubbleController(monitor: secureInput)
     let otherRemappers = OtherRemapperMonitor()
     lazy var clipboard = ClipboardController()
     lazy var clipboardPanel = ClipboardPanelController(clipboard: clipboard)
@@ -82,6 +83,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         permissionMonitor.start()
         electronAccessibility.start()
         secureInput.start()
+        secureInputBubble.start()
         otherRemappers.start()
         keyboards.onChange = { [rules] in rules.setConnectedKeyboards($0) }
         keyboards.start()

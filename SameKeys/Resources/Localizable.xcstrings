@@ -120,6 +120,64 @@
         }
       }
     },
+    "%@ has Secure Input on in the background, so macOS hides every key press from SameKeys." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ hat die sichere Eingabe im Hintergrund eingeschaltet, daher verbirgt macOS jeden Tastendruck vor SameKeys."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tiene la entrada segura activada en segundo plano, así que macOS oculta todas las pulsaciones a SameKeys."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ a la saisie sécurisée activée en arrière-plan : macOS cache donc chaque frappe à SameKeys."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ がバックグラウンドでセキュア入力をオンにしているため、macOS はすべてのキー入力を SameKeys から隠しています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@에서 백그라운드로 보안 입력이 켜져 있어 macOS가 모든 키 입력을 SameKeys에 숨기고 있습니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ma włączone bezpieczne wprowadzanie w tle, więc macOS ukrywa przed SameKeys każde naciśnięcie klawisza."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ está com a entrada segura ativada em segundo plano, então o macOS esconde todas as teclas do SameKeys."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 在后台开着安全输入，macOS 因此对 SameKeys 隐藏了所有按键。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 在背景開著安全輸入，macOS 因此對 SameKeys 隱藏了所有按鍵。"
+          }
+        }
+      }
+    },
     "%@ has turned on Secure Input, which hides key presses from apps like SameKeys — a macOS safeguard for passwords, not a fault. Mouse buttons and scrolling still work." : {
       "localizations" : {
         "de" : {
@@ -232,6 +290,134 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 正在執行"
+          }
+        }
+      }
+    },
+    "%@ left Secure Input on in the background, so macOS hides every key press from SameKeys. Go back to %@ and click outside its password field." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ hat die sichere Eingabe im Hintergrund eingeschaltet gelassen, daher verbirgt macOS jeden Tastendruck vor SameKeys. Wechsle zurück zu %2$@ und klicke außerhalb des Passwortfelds."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ left Secure Input on in the background, so macOS hides every key press from SameKeys. Go back to %2$@ and click outside its password field."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ dejó activada la entrada segura en segundo plano, así que macOS oculta todas las pulsaciones a SameKeys. Vuelve a %2$@ y haz clic fuera del campo de contraseña."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ a laissé la saisie sécurisée activée en arrière-plan : macOS cache donc chaque frappe à SameKeys. Revenez dans %2$@ et cliquez en dehors du champ de mot de passe."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ がバックグラウンドでセキュア入力をオンのままにしているため、macOS はすべてのキー入力を SameKeys から隠しています。%2$@ に戻り、パスワード欄の外をクリックしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@이(가) 백그라운드에서 보안 입력을 켜 둔 상태라 macOS가 모든 키 입력을 SameKeys에 숨기고 있습니다. %2$@(으)로 돌아가 암호 필드 바깥을 클릭하세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ zostawia włączone bezpieczne wprowadzanie w tle, więc macOS ukrywa przed SameKeys każde naciśnięcie klawisza. Wróć do %2$@ i kliknij poza polem hasła."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ deixou a entrada segura ativada em segundo plano, então o macOS esconde todas as teclas do SameKeys. Volte ao %2$@ e clique fora do campo de senha."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ 在后台开着安全输入，macOS 因此对 SameKeys 隐藏了所有按键。回到 %2$@，在密码框外点一下即可。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ 在背景開著安全輸入，macOS 因此對 SameKeys 隱藏了所有按鍵。回到 %2$@，在密碼欄位外點一下即可。"
+          }
+        }
+      }
+    },
+    "%@ left it on when you switched away. Go back to %@ and click outside its password field." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ hat sie beim Wechseln eingeschaltet gelassen. Wechsle zurück zu %2$@ und klicke außerhalb des Passwortfelds."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ left it on when you switched away. Go back to %2$@ and click outside its password field."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ la dejó activada al cambiar de app. Vuelve a %2$@ y haz clic fuera del campo de contraseña."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ l’a laissée activée quand vous avez changé d’app. Revenez dans %2$@ et cliquez en dehors du champ de mot de passe."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ は切り替えたあともオンのままです。%2$@ に戻り、パスワード欄の外をクリックしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@에서 전환한 뒤에도 켜진 상태입니다. %2$@(으)로 돌아가 암호 필드 바깥을 클릭하세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ zostawia je włączone po przełączeniu. Wróć do %2$@ i kliknij poza polem hasła."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ a deixou ativada quando você trocou de app. Volte ao %2$@ e clique fora do campo de senha."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切走后 %1$@ 仍开着它。回到 %2$@，在密码框外点一下即可。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切走後 %1$@ 仍開著它。回到 %2$@，在密碼欄位外點一下即可。"
           }
         }
       }
@@ -1935,6 +2121,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "有 App 開啟了安全輸入，系統會對 SameKeys 這類 App 隱藏按鍵——這是 macOS 保護密碼的機制，不是故障。滑鼠按鈕和捲動仍然正常。"
+          }
+        }
+      }
+    },
+    "An app in the background left Secure Input on, so macOS hides every key press from SameKeys. Go back to it and click outside its password field." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine App im Hintergrund hat die sichere Eingabe eingeschaltet gelassen, daher verbirgt macOS jeden Tastendruck vor SameKeys. Wechsle zurück zu ihr und klicke außerhalb ihres Passwortfelds."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una app en segundo plano dejó activada la entrada segura, así que macOS oculta todas las pulsaciones a SameKeys. Vuelve a ella y haz clic fuera de su campo de contraseña."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une app en arrière-plan a laissé la saisie sécurisée activée : macOS cache donc chaque frappe à SameKeys. Revenez-y et cliquez en dehors de son champ de mot de passe."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックグラウンドのアプリがセキュア入力をオンのままにしているため、macOS はすべてのキー入力を SameKeys から隠しています。そのアプリに戻り、パスワード欄の外をクリックしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "백그라운드의 앱이 보안 입력을 켜 둔 상태라 macOS가 모든 키 입력을 SameKeys에 숨기고 있습니다. 그 앱으로 돌아가 암호 필드 바깥을 클릭하세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja w tle zostawiła włączone bezpieczne wprowadzanie, więc macOS ukrywa przed SameKeys każde naciśnięcie klawisza. Wróć do niej i kliknij poza polem hasła."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um app em segundo plano deixou a entrada segura ativada, então o macOS esconde todas as teclas do SameKeys. Volte a ele e clique fora do campo de senha."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "后台有 app 开着安全输入，macOS 因此对 SameKeys 隐藏了所有按键。回到那个 app，在密码框外点一下即可。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "背景有 App 開著安全輸入，macOS 因此對 SameKeys 隱藏了所有按鍵。回到那個 App，在密碼欄位外點一下即可。"
           }
         }
       }
@@ -4139,6 +4383,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "剪貼簿歷史"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fechar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
           }
         }
       }
@@ -9248,6 +9550,64 @@
         }
       }
     },
+    "Go to %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir a %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aller à %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ に戻る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@(으)로 이동"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przejdź do %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir para %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回到 %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回到 %@"
+          }
+        }
+      }
+    },
     "Go to File" : {
       "localizations" : {
         "de" : {
@@ -11042,6 +11402,122 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安全輸入已暫停鍵盤對應（%@）"
+          }
+        }
+      }
+    },
+    "Keyboard paused: %@ left Secure Input on in the background" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tastatur pausiert: %@ hat die sichere Eingabe im Hintergrund eingeschaltet gelassen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teclado en pausa: %@ dejó activada la entrada segura en segundo plano"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier en pause : %@ a laissé la saisie sécurisée activée en arrière-plan"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーボードは一時停止中：%@ がバックグラウンドでセキュア入力をオンのままにしています"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키보드 일시 정지됨: %@이(가) 백그라운드에서 보안 입력을 켜 둔 상태입니다"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klawiatura wstrzymana: %@ zostawia włączone bezpieczne wprowadzanie w tle"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teclado pausado: %@ deixou a entrada segura ativada em segundo plano"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "键盘已暂停：%@ 在后台开着安全输入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鍵盤已暫停：%@ 在背景開著安全輸入"
+          }
+        }
+      }
+    },
+    "Keyboard shortcuts paused" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tastaturkurzbefehle pausiert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atajos de teclado en pausa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raccourcis clavier en pause"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーボードショートカットは一時停止中"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키보드 단축키 일시 정지됨"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skróty klawiszowe wstrzymane"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atalhos de teclado pausados"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "键盘快捷键已暂停"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鍵盤快速鍵已暫停"
           }
         }
       }

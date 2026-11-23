@@ -73,6 +73,7 @@
 		509285B06BD449DF465629B2 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88773A43AA2B3D211F9278C6 /* OnboardingController.swift */; };
 		50FD7832D383572F69F17C04 /* SettingsBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0A4D29D60C091496B9E25A /* SettingsBackup.swift */; };
 		5144C4BED154C5EC1B866549 /* WindowGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C70C55196822B2EC71F76DA /* WindowGeometryTests.swift */; };
+		52084057CDB73806100F2915 /* SecureInputBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4117C3EFF6022680D3DC2CF1 /* SecureInputBubble.swift */; };
 		53515326ACA8C71102E9D312 /* FeedbackLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FB80BB182E4B5C37150EDD /* FeedbackLinks.swift */; };
 		53C121C8ED5B08AE91093A62 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 0D687FD8D4FA82B5795BA682 /* AppIcon.icon */; };
 		55E93F6C7AC856895449B218 /* BuiltInRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1A12C04EF97FB9F5DE94 /* BuiltInRules.swift */; };
@@ -285,6 +286,7 @@
 		3DA70BFD5B42EC76D3F78C9A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		402DE3C018FC41A42FF37271 /* LICENSE */ = {isa = PBXFileReference; path = LICENSE; sourceTree = "<group>"; };
 		408853C20209088A7A98B32E /* PastedPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastedPath.swift; sourceTree = "<group>"; };
+		4117C3EFF6022680D3DC2CF1 /* SecureInputBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputBubble.swift; sourceTree = "<group>"; };
 		42F610FFF1240D830B05D3A4 /* InputSourceSwitcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSourceSwitcherTests.swift; sourceTree = "<group>"; };
 		48630A35ED60631D6F264AAB /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
 		4B3E1C8757B603B3FECB65F6 /* DiagnosticReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticReportTests.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 				83DCEC9AC9D07D6A8B10B2A0 /* PanelFocus.swift */,
 				613C4C1381FE84A567CFACDE /* PanelLevel.swift */,
 				A19A1E4BA6E88B44330E79C7 /* RuleEditor.swift */,
+				4117C3EFF6022680D3DC2CF1 /* SecureInputBubble.swift */,
 				6CDCF8CD7D38FA25D0AD685D /* SettingsBackupCard.swift */,
 				014E42BACF4ACBEC8A02704D /* Sidebar.swift */,
 				D62FDA346487585767BA29D9 /* SystemActionPicker.swift */,
@@ -963,6 +966,7 @@
 				0C4217EA8E12A4D154E667B7 /* SameKeysApp.swift in Sources */,
 				5AC3936C498604F39435E22E /* Scope.swift in Sources */,
 				DE3450B8D8F727D1D539FE14 /* ScrollStepper.swift in Sources */,
+				52084057CDB73806100F2915 /* SecureInputBubble.swift in Sources */,
 				629610A5433AB275FB1EC1C4 /* SecureInputMonitor.swift in Sources */,
 				50FD7832D383572F69F17C04 /* SettingsBackup.swift in Sources */,
 				64CCB115516E314FFFA9A8F1 /* SettingsBackupCard.swift in Sources */,

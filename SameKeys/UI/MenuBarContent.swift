@@ -135,6 +135,9 @@ struct MenuBarContent: View {
         }
         if !engine.isActive { return String(localized: "SameKeys could not start") }
         if let holder = secureInput.holder {
+            if secureInput.isHeldInBackground, let name = holder.appName {
+                return String(localized: "Keyboard paused: \(name) left Secure Input on in the background")
+            }
             return holder.appName.map { String(localized: "Keyboard paused by Secure Input (\($0))") }
                 ?? String(localized: "Keyboard paused by Secure Input")
         }

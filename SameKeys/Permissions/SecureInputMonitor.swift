@@ -22,11 +22,20 @@ final class SecureInputMonitor {
         var appName: String?
         var bundleID: String?
         var since: Date
+        /// The holder's process, to bring it back to the front.
+        var pid: pid_t? = nil
+        /// An app with windows and a Dock icon, as opposed to the login
+        /// window, the Touch ID prompt and other system agents.
+        var isRegularApp = false
     }
 
     /// How long Secure Input has to stay on before it no longer looks like
     /// a password being typed, and the app holding it is worth naming.
     static let lingering: TimeInterval = 30
+
+    /// How long the holder has to be out of the front before it counts as
+    /// left on in the background rather than a quick look elsewhere.
+    static let backgroundDelay: TimeInterval = 3
 
     /// Reads the current state: whether it is on, and the holder's process.
     struct Reading {
@@ -34,11 +43,26 @@ final class SecureInputMonitor {
         var pid: pid_t?
     }
 
-    @ObservationIgnored private let read: () -> Reading
-    @ObservationIgnored private var timer: Timer?
+    /// An app as the monitor needs it: who it is and what kind of app.
+    struct App: Equatable {
+        var name: String?
+        var bundleID: String?
+        var pid: pid_t
+        var isRegular: Bool
+    }
 
-    init(read: @escaping () -> Reading = SecureInputMonitor.systemReading) {
+    @ObservationIgnored private let read: () -> Reading
+    @ObservationIgnored private let app: (pid_t) -> App?
+    @ObservationIgnored private let frontmost: () -> App?
+    @ObservationIgnored private var timer: Timer?
+    @ObservationIgnored private var leftFrontAt: Date?
+
+    init(read: @escaping () -> Reading = SecureInputMonitor.systemReading,
+         app: @escaping (pid_t) -> App? = SecureInputMonitor.runningApp,
+         frontmost: @escaping () -> App? = { NSWorkspace.shared.frontmostApplication.map(SecureInputMonitor.app(for:)) }) {
         self.read = read
+        self.app = app
+        self.frontmost = frontmost
     }
 
     func start() {
@@ -55,6 +79,12 @@ final class SecureInputMonitor {
     /// it rather than typing a password. Updated on each poll.
     private(set) var isLingering = false
 
+    /// Whether the holder is an app that has left the front for a while
+    /// with Secure Input still on (SK-307): Chrome does this when the user
+    /// switches away from one of its password fields, and every key press
+    /// stays hidden from SameKeys until they go back and leave the field.
+    private(set) var isHeldInBackground = false
+
     func refresh(now: Date = .now) {
         let reading = read()
         guard reading.isOn else {
@@ -62,18 +92,49 @@ final class SecureInputMonitor {
                 Logger.permissions.notice("Secure Input off")
                 holder = nil
                 isLingering = false
+                isHeldInBackground = false
+                leftFrontAt = nil
             }
             return
         }
-        let app = reading.pid.flatMap(NSRunningApplication.init(processIdentifier:))
-        let bundleID = app?.bundleIdentifier
-        // A new holder starts the clock again; the same one keeps it.
-        if holder?.bundleID != bundleID || holder == nil {
-            holder = Holder(appName: app?.localizedName, bundleID: bundleID, since: now)
-            Logger.permissions.notice("Secure Input on, held by \(bundleID ?? "an unknown process", privacy: .public)")
+        if holder == nil {
+            // While Secure Input stays on, macOS reports whichever app is in
+            // front as its holder (measured with Chrome and WeChat, SK-307),
+            // so the app is taken once, as it turns on: the one whose
+            // password field the user has just clicked into.
+            let owner = reading.pid.flatMap(app) ?? frontmost()
+            holder = Holder(appName: owner?.name, bundleID: owner?.bundleID, since: now,
+                            pid: owner?.pid, isRegularApp: owner?.isRegular ?? false)
+            Logger.permissions.notice("Secure Input on, held by \(owner?.bundleID ?? "an unknown process", privacy: .public)")
         }
-        let lingering = now.timeIntervalSince(holder!.since) >= Self.lingering
+        guard let holder else { return }
+        let lingering = now.timeIntervalSince(holder.since) >= Self.lingering
         if lingering != isLingering { isLingering = lingering }
+
+        let front = frontmost()
+        let isAway = holder.isRegularApp && holder.pid != nil && front?.pid != holder.pid
+        if isAway {
+            if leftFrontAt == nil {
+                leftFrontAt = now
+                Logger.permissions.notice("Secure Input holder \(holder.bundleID ?? "?", privacy: .public) left the front for \(front?.bundleID ?? "?", privacy: .public)")
+            }
+        } else {
+            leftFrontAt = nil
+        }
+        let background = leftFrontAt.map { now.timeIntervalSince($0) >= Self.backgroundDelay } ?? false
+        if background != isHeldInBackground {
+            isHeldInBackground = background
+            if background { Logger.permissions.notice("Secure Input left on in the background by \(holder.bundleID ?? "?", privacy: .public)") }
+        }
+    }
+
+    nonisolated static func app(for app: NSRunningApplication) -> App {
+        App(name: app.localizedName, bundleID: app.bundleIdentifier, pid: app.processIdentifier,
+            isRegular: app.activationPolicy == .regular)
+    }
+
+    nonisolated static func runningApp(pid: pid_t) -> App? {
+        NSRunningApplication(processIdentifier: pid).map(app(for:))
     }
 
     nonisolated static func systemReading() -> Reading {
