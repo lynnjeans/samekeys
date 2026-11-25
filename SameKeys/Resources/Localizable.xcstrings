@@ -26429,13 +26429,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "正在等待%@…"
+            "value" : "正在等待%@授权…"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "正在等待 %@…"
+            "value" : "正在等待%@授權…"
           }
         }
       }
