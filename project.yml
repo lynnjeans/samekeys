@@ -84,6 +84,12 @@ targets:
         SUEnableAutomaticChecks: true
         SUScheduledCheckInterval: 86400
         SUEnableSystemProfiling: false
+        # The feed is signed with the same key (SK-312), so a changed feed
+        # cannot show other release notes or mark a version critical; and an
+        # update is checked before its DMG is even mounted. Sparkle needs the
+        # second for the first.
+        SURequireSignedFeed: true
+        SUVerifyUpdateBeforeExtraction: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.samekeys.SameKeys
