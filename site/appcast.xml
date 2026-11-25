@@ -6,6 +6,44 @@
     <description>SameKeys updates</description>
     <language>en</language>
     <item>
+      <title>SameKeys 1.5</title>
+      <pubDate>Wed, 25 Nov 2026 07:10:48 GMT</pubDate>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>1.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description xml:lang="en">&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Setup guide&lt;/b&gt;: choose its language; its last step turns on the features that start off.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Finder&lt;/b&gt;: Ctrl+V pastes copies, and moves only after Ctrl+X; Ctrl+Shift+N makes a new folder.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Browsers&lt;/b&gt;: Ctrl+Shift+N opens a private window.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Terminals inside apps&lt;/b&gt;: in VS Code and similar apps, Ctrl keys go to the terminal unchanged.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Wheel zoom&lt;/b&gt;: follows each keyboard's Ctrl key.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Win and Alt keys&lt;/b&gt;: the choice is now drawn on the keyboard.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Password fields&lt;/b&gt;: when an app in the background holds Secure Input and shortcuts pause, the menu bar says which app.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Clipboard history&lt;/b&gt;: copying in remote desktop apps no longer stalls keys.&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <description xml:lang="zh-Hans">&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;安装向导&lt;/b&gt;：可以选择语言；最后一步可以直接打开默认关闭的功能。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;访达&lt;/b&gt;：Ctrl+V 粘贴副本，先按 Ctrl+X 才是移动；Ctrl+Shift+N 新建文件夹。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;浏览器&lt;/b&gt;：Ctrl+Shift+N 打开无痕窗口。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;应用内终端&lt;/b&gt;：VS Code 等应用里的终端，Ctrl 键原样传给终端。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;滚轮缩放&lt;/b&gt;：跟着每个键盘的 Ctrl 键走。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Win 和 Alt 键&lt;/b&gt;：设置改为画在键盘上，一眼看懂。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;密码框&lt;/b&gt;：其他应用在后台占着安全输入、快捷键暂停时，菜单栏会提示是哪个应用。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;剪贴板历史&lt;/b&gt;：远程桌面等应用复制时不再卡住按键。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <description xml:lang="ja">&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;セットアップガイド&lt;/b&gt;：言語を選べます。最後のステップで、オフになっている機能をオンにできます。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Finder&lt;/b&gt;：Ctrl+V はコピーを貼り付け、Ctrl+X のあとだけ移動します。Ctrl+Shift+N で新規フォルダ。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ブラウザ&lt;/b&gt;：Ctrl+Shift+N でプライベートウインドウを開きます。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;アプリ内のターミナル&lt;/b&gt;：VS Code などのターミナルでは、Ctrl キーをそのまま渡します。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;ホイールでズーム&lt;/b&gt;：キーボードごとの Ctrl キーに合わせます。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Win キーと Alt キー&lt;/b&gt;：設定をキーボードの図で選べるようにしました。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;パスワード欄&lt;/b&gt;：バックグラウンドのアプリがセキュア入力を使っていてショートカットが止まると、メニューバーにそのアプリを表示します。&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;クリップボード履歴&lt;/b&gt;：リモートデスクトップなどでコピーしても、キーが止まらなくなりました。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <enclosure url="https://github.com/lynnjeans/samekeys/releases/download/v1.5/SameKeys-1.5.dmg" length="5266430" type="application/octet-stream" sparkle:edSignature="pieZwVrERnxHFeGjIwIVADOtcDo018L1HNY0LsDihOUkuRRJdnHynkwRUAX+GdigS9KBSvSrxMoWPb2iwcnSAA==" />
+    </item>
+    <item>
       <title>SameKeys 1.4</title>
       <pubDate>Tue, 06 Oct 2026 21:25:55 GMT</pubDate>
       <sparkle:version>5</sparkle:version>
@@ -41,29 +79,6 @@
   &lt;li&gt;&lt;b&gt;フィードバック&lt;/b&gt;：「情報」ページに「フィードバック」を追加しました。GitHub やメール（hello@samekeys.com）で問題を報告でき、バージョンは自動で入力されます。&lt;/li&gt;
 &lt;/ul&gt;</description>
       <enclosure url="https://github.com/lynnjeans/samekeys/releases/download/v1.3/SameKeys-1.3.dmg" length="5189735" type="application/octet-stream" sparkle:edSignature="JZOWp1m9BgyIK96ql2BTPMoyH87k0UBlCQ7o0v3vJMmDUXHRLP3HLueJyAa0/2b8EnRbGdZPuGBq5jNBtuutDA==" />
-    </item>
-    <item>
-      <title>SameKeys 1.2</title>
-      <pubDate>Tue, 06 Oct 2026 08:27:54 GMT</pubDate>
-      <sparkle:version>3</sparkle:version>
-      <sparkle:shortVersionString>1.2</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description xml:lang="en">&lt;ul&gt;
-  &lt;li&gt;&lt;b&gt;Switch input source&lt;/b&gt;: a new system function that switches between ABC and the other input source you use (Chinese, Japanese, Korean, Russian and more) directly, like Caps Lock, with no switcher on screen. Give it to Shift tapped alone, or any other key, in Custom Rules.&lt;/li&gt;
-  &lt;li&gt;&lt;b&gt;Win+Space&lt;/b&gt;: with the Windows Key group on, Win+Space switches the input source, as on Windows.&lt;/li&gt;
-  &lt;li&gt;&lt;b&gt;Paste a path&lt;/b&gt;: the ⌘L path box is gone; paste a path with Ctrl+Shift+G, in Finder and in open and save dialogs.&lt;/li&gt;
-&lt;/ul&gt;</description>
-      <description xml:lang="zh-Hans">&lt;ul&gt;
-  &lt;li&gt;&lt;b&gt;切换输入法&lt;/b&gt;：「系统功能」新增「切换输入法」，像大写锁定键一样在 ABC 和你常用的其他输入法（中文、日文、韩文、俄文等）之间直接切换，不弹提示。可以在「自定义规则」里把它设给单按 Shift 或其他键。&lt;/li&gt;
-  &lt;li&gt;&lt;b&gt;Win+空格&lt;/b&gt;：打开「Windows 键」分组后，Win+空格切换输入法，和 Windows 一样。&lt;/li&gt;
-  &lt;li&gt;&lt;b&gt;粘贴路径&lt;/b&gt;：去掉了 ⌘L 路径框，在访达和打开/存储对话框里统一用 Ctrl+Shift+G 粘贴路径。&lt;/li&gt;
-&lt;/ul&gt;</description>
-      <description xml:lang="ja">&lt;ul&gt;
-  &lt;li&gt;&lt;b&gt;入力ソースを切り替え&lt;/b&gt;：新しいシステム機能で、Caps Lock のように ABC といつも使う入力ソース（日本語、中国語、韓国語、ロシア語など）を直接切り替えます。切り替えの表示は出ません。「カスタムルール」で Shift の単独押しなど、好きなキーに割り当てられます。&lt;/li&gt;
-  &lt;li&gt;&lt;b&gt;Win+スペース&lt;/b&gt;：「Windows キー」グループをオンにすると、Windows と同じように Win+スペースで入力ソースを切り替えます。&lt;/li&gt;
-  &lt;li&gt;&lt;b&gt;パスを貼り付け&lt;/b&gt;：⌘L のパスボックスはなくなりました。Finder と開く・保存ダイアログで Ctrl+Shift+G を押してパスを貼り付けます。&lt;/li&gt;
-&lt;/ul&gt;</description>
-      <enclosure url="https://github.com/lynnjeans/samekeys/releases/download/v1.2/SameKeys-1.2.dmg" length="5180016" type="application/octet-stream" sparkle:edSignature="zdcaKISO5KtBPvSCMOOkAdowM4ryR+1rUT8IiBRuQWdemUCq86bQp7Gs232NBSK3DIUT2iEtSyPWXmxVEAWqCg==" />
     </item>
   </channel>
 </rss>
