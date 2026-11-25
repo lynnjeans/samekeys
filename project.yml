@@ -181,6 +181,7 @@ targets:
       - path: SameKeys/FileDialog/FinderFolderPicker.swift
       - path: SameKeys/App/EngineController.swift
       - path: SameKeys/App/LoginItem.swift
+      - path: SameKeys/App/Relaunch.swift
       - path: SameKeys/App/FeedbackLinks.swift
       - path: SameKeys/App/DiagnosticReport.swift
       - path: SameKeys/App/DiagnosticRecorder.swift

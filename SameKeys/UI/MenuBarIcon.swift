@@ -31,8 +31,9 @@ struct MenuBarIcon: View {
             .onAppear {
                 if onboarding.shouldOpenAtLaunch() {
                     if onboarding.isRestartFromGuide {
-                        // Brought forward once the copy that restarted has
-                        // quit; until then the front is not SameKeys' to take.
+                        // The copy that restarted hands over the front, but
+                        // as it exits macOS may give the front to another
+                        // app: the guide is brought forward again then.
                         openWindow(id: WindowID.onboarding)
                         Relaunch.afterPreviousCopyQuits { WindowID.bringToFront(WindowID.onboarding) }
                     } else {
