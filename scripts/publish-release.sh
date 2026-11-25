@@ -65,12 +65,24 @@ signature=$($sign_update --account keybridge -p $dmg)
 length=$(stat -f %z $dmg)
 
 # Written to a copy first: appcast.py refuses a build number that is not
-# newer, and that should stop things before anything is uploaded.
-feed=$(mktemp)
-trap 'rm -f $feed' EXIT
-[[ -f $appcast ]] && cp $appcast $feed || rm -f $feed
+# newer, and that should stop things before anything is uploaded. The copy
+# ends in .xml, which is how sign_update tells a feed from an archive.
+feed_dir=$(mktemp -d)
+trap 'rm -rf $feed_dir' EXIT
+feed=$feed_dir/appcast.xml
+[[ -f $appcast ]] && cp $appcast $feed
 python3 scripts/appcast.py --appcast $feed --version $version --build $build --url $url \
   --length $length --signature $signature --notes $notes $critical
+
+# The feed itself is signed too (SK-312): copies after 1.5.1 set
+# SURequireSignedFeed and refuse a feed whose signature does not match, so a
+# changed feed cannot show other release notes or mark a version critical.
+# appcast.py drops the old signature when it rewrites the feed; sign_update
+# appends the new one. Any later hand edit of site/appcast.xml must be
+# signed again: `sign_update --account keybridge site/appcast.xml`.
+step "Signing the update feed"
+$sign_update --account keybridge $feed
+$sign_update --account keybridge --verify $feed >/dev/null || fail "the signed feed does not verify"
 
 print
 print "  Release:   $tag, $dmg ($(du -h $dmg | cut -f1 | tr -d ' '))"

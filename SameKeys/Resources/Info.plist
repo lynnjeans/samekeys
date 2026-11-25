@@ -58,7 +58,11 @@
 	<string>https://samekeys.com/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>+mui14fQOOo10sFdbz8XnVClc/6jH9XYn9DNxEMq7nA=</string>
+	<key>SURequireSignedFeed</key>
+	<true/>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
+	<key>SUVerifyUpdateBeforeExtraction</key>
+	<true/>
 </dict>
 </plist>
