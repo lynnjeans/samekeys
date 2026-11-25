@@ -163,10 +163,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// Opening SameKeys again while it runs, from Finder or Spotlight, shows
     /// the main window. On a MacBook with a full menu bar the notch can hide
     /// the status item, and this is then the only way in.
+    ///
+    /// While the setup guide is open, it is the guide that comes forward: it
+    /// is what the user is in the middle of (SK-309).
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
         // SameKeys bringing its own window forward (`WindowID.bringToFront`).
         guard !WindowID.isActivatingItself else { return false }
-        NotificationCenter.default.post(name: .openMainWindow, object: nil)
+        let guideIsOpen = sender.windows.contains {
+            $0.isVisible && $0.identifier?.rawValue.hasPrefix(WindowID.onboarding) == true
+        }
+        NotificationCenter.default.post(name: guideIsOpen ? .openOnboarding : .openMainWindow, object: nil)
         return false
     }
 

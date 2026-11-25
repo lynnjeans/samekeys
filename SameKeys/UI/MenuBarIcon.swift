@@ -29,7 +29,16 @@ struct MenuBarIcon: View {
             // at which a window can be opened: `applicationDidFinishLaunching`
             // runs before SwiftUI has installed any of this.
             .onAppear {
-                if onboarding.shouldOpenAtLaunch() { open(WindowID.onboarding) }
+                if onboarding.shouldOpenAtLaunch() {
+                    if onboarding.isRestartFromGuide {
+                        // Brought forward once the copy that restarted has
+                        // quit; until then the front is not SameKeys' to take.
+                        openWindow(id: WindowID.onboarding)
+                        Relaunch.afterPreviousCopyQuits { WindowID.bringToFront(WindowID.onboarding) }
+                    } else {
+                        open(WindowID.onboarding)
+                    }
+                }
                 // The item's window is in place once this view is.
                 DispatchQueue.main.async { Self.setItemVisible(showsIcon) }
             }
