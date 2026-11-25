@@ -79,6 +79,9 @@ final class OnboardingController {
     /// the guide itself (SK-303).
     static let reopenArgument = "--reopen-guide"
 
+    /// Whether this copy was started by a language change in the guide.
+    var isRestartFromGuide: Bool { launchArguments.contains(Self.reopenArgument) }
+
     init(
         permissions: PermissionMonitor,
         loginItem: LoginItem,
@@ -118,7 +121,7 @@ final class OnboardingController {
         hasConsideredLaunch = true
         // Restarted from the guide for another language: back to where the
         // user was, whatever the permissions say (SK-303).
-        if launchArguments.contains(Self.reopenArgument) {
+        if isRestartFromGuide {
             Logger.permissions.notice("Restarted from the guide: opening it again")
             if hasCompleted {
                 loginItem.refresh()
